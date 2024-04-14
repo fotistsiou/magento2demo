@@ -1,0 +1,60 @@
+//
+//  Amasty Base Submenu Type Second UiComponent
+//  ______________________________________________
+
+//
+//  Common
+//  ----------------------------------------------
+
+& when (@media-common = true) {
+    /* phpcs:ignore Magento2.Less.AvoidId.IdSelectorUsage */
+    #menu-menuamasty-base-menu .ambase-submenu.-second {
+        & {
+            & {
+                left: 100%;
+                opacity: 0;
+            }
+
+            /* phpcs:ignore Magento2.Less.ClassNaming.NotAllowedSymbol,Magento2.Less.ZeroUnits.ZeroUnitFound */
+            &:extend(.admin__menu .level-0 > .submenu, .admin__menu .level-0._show > .submenu all);
+        }
+
+        &:not(._show) {
+            transform: translateX(-100%);
+            visibility: visible;
+        }
+
+        /* phpcs:ignore Magento2.Less.ClassNaming.NotAllowedSymbol */
+        .admin__menu & {
+            transition-property: opacity;
+        }
+
+        &._show {
+            opacity: 1;
+        }
+
+        .ambase-menu-item {
+            & {
+                color: @color-gray65-almost;
+            }
+
+            &:hover {
+                color: @color-very-light-gray;
+            }
+        }
+
+        .ambase-label.active {
+            color: @color-gray65-almost;
+        }
+
+        .ambase-menu-item .ambase-menu-item {
+            & {
+                color: @color-very-light-gray;
+            }
+
+            &:hover {
+                color: @color-gray65-almost;
+            }
+        }
+    }
+}

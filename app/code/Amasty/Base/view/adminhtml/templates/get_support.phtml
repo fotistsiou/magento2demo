@@ -1,0 +1,224 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Magento 2 Base Package
+ */
+
+use Amasty\Base\Block\Adminhtml\GetSupport;
+use Magento\Framework\Escaper;
+use Amasty\Base\ViewModel\GetSupport as GetSupportViewModel;
+
+/** @var GetSupport $block */
+/** @var Escaper $escaper */
+
+/** @var GetSupportViewModel $viewModel */
+$viewModel = $block->getData('view_model');
+?>
+
+<h2 class="ambase-page-title ambase-support-page-title">
+    <?= $escaper->escapeHtml(__('Get Support')) ?>
+</h2>
+
+<div class="amasty-info-block">
+    <div class="message message-notice success">
+        <div data-ui-id="messages-message-success">
+            If you purchased the advanced support and had an issue, please
+            <a href="<?= $escaper->escapeUrl($viewModel->getSubmitTicketUrl()) ?>" target="_blank">submit a ticket</a>
+            to the support department.
+        </div>
+    </div>
+</div>
+
+<div class="ambase-support-container">
+    <div class="support-item">
+        <div class="support-item-row">
+            <div class="subscription-image-container">
+                <img class="subscription-image"
+                     src="<?= $escaper->escapeUrl($block->getViewFileUrl('Amasty_Base::images/support/pro.svg')) ?>"
+                     alt="<?= $escaper->escapeHtmlAttr(__('Pro Subscription')) ?>">
+            </div>
+            <div class="subscription-info">
+                <div class="subscription-name">
+                    <?= $escaper->escapeHtml(__('Pro')) ?>
+                </div>
+                <div class="subscription-price">
+                    <span class="subscription-price-year">$759/<?= $escaper->escapeHtml(__('year')) ?></span>
+                    <span class="subscription-price-month">($63/<?= $escaper->escapeHtml(__('mo')) ?>)</span>
+                </div>
+            </div>
+        </div>
+        <div class="support-item-row">
+            <div class="subscription-agreement">
+                <div class="subscription-agreement-header">
+                    <?= $escaper->escapeHtml(__('Service level agreement')) ?>
+                </div>
+                <div class="subscription-agreement-container">
+                    <div class="subscription-agreement-item">
+                        <?= $escaper->escapeHtml(__('24h - time to first response')) ?>
+                    </div>
+                    <div class="subscription-agreement-item">
+                        <?= $escaper->escapeHtml(__('48h - time to update')) ?>
+                    </div>
+                    <div class="subscription-agreement-item">
+                        <?= $escaper->escapeHtml(__('48h - time to technical review')) ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="support-item-row">
+            <ul class="subscription-options">
+                <li class="subscription-options-item">
+                    <?= $escaper->escapeHtml(__('Free installation for all extensions')) ?>
+                </li>
+                <li class="subscription-options-item">
+                    <?= $escaper->escapeHtml(__('Free configuration service')) ?>
+                </li>
+            </ul>
+        </div>
+        <a class="subscription-link"
+           href="<?= $escaper->escapeUrl($viewModel->getProSubscribeUrl()) ?>"
+           target="_blank">
+            <?= $escaper->escapeHtml(__('Subscribe')) ?>
+        </a>
+    </div>
+    <div class="support-item">
+        <div class="support-item-row">
+            <div class="subscription-image-container">
+                <img class="subscription-image"
+                     src="<?= $escaper->escapeUrl($block->getViewFileUrl('Amasty_Base::images/support/premium.svg')) ?>"
+                     alt="<?= $escaper->escapeHtmlAttr(__('Premium Subscription')) ?>">
+            </div>
+            <div class="subscription-info">
+                <div class="subscription-name-container">
+                    <div class="subscription-name">
+                        <?= $escaper->escapeHtml(__('Premium')) ?>
+                    </div>
+                    <div class="subscription-name-badge-container">
+                        <span class="subscription-name-badge">
+                            <?= $escaper->escapeHtml(__('Popular')) ?>
+                        </span>
+                    </div>
+                </div>
+                <div class="subscription-price">
+                    <span class="subscription-price-year">$949/<?= $escaper->escapeHtml(__('year')) ?></span>
+                    <span class="subscription-price-month">($79/<?= $escaper->escapeHtml(__('mo')) ?>)</span>
+                </div>
+            </div>
+        </div>
+        <div class="support-item-row">
+            <div class="subscription-agreement">
+                <div class="subscription-agreement-header">
+                    <?= $escaper->escapeHtml(__('Service level agreement')) ?>
+                </div>
+                <div class="subscription-agreement-container">
+                    <div class="subscription-agreement-item">
+                        <?= $escaper->escapeHtml(__('24h - time to first response')) ?>
+                    </div>
+                    <div class="subscription-agreement-item">
+                        <?= $escaper->escapeHtml(__('24h - time to update')) ?>
+                    </div>
+                    <div class="subscription-agreement-item">
+                        <?= $escaper->escapeHtml(__('24h - time to technical review')) ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="support-item-row">
+            <ul class="subscription-options">
+                <li class="subscription-options-item">
+                    <?= $escaper->escapeHtml(__('Pro included')) ?>
+                </li>
+                <li class="subscription-options-item">
+                    <?= $escaper->escapeHtml(__('Instant support in Slack')) ?>
+                </li>
+                <li class="subscription-options-item">
+                    <?= $escaper->escapeHtml(__('Free installation of version updates')) ?>
+                    <br/>
+                    <span class="subscription-options-item-hint">
+                        <?= $escaper->escapeHtml(__('on request')) ?>
+                    </span>
+                </li>
+                <li class="subscription-options-item">
+                    <?= $escaper->escapeHtml(__('Lite Performance Audit')) ?>
+                    <br/>
+                    <span class="subscription-options-item-hint">
+                        <?= $escaper->escapeHtml(__('once per quarter')) ?>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <a class="subscription-link"
+           href="<?= $escaper->escapeUrl($viewModel->getPremiumSubscribeUrl()) ?>"
+           target="_blank">
+            <?= $escaper->escapeHtml(__('Subscribe')) ?>
+        </a>
+    </div>
+    <div class="support-item">
+        <div class="support-item-row">
+            <div class="subscription-image-container">
+                <img class="subscription-image"
+                     src="<?= $escaper->escapeUrl($block->getViewFileUrl('Amasty_Base::images/support/amasty-one.svg')) ?>"
+                     alt="<?= $escaper->escapeHtmlAttr(__('Amasty One Subscription')) ?>">
+            </div>
+            <div class="subscription-info">
+                <div class="subscription-name">
+                    <?= $escaper->escapeHtml(__('Amasty One')) ?>
+                </div>
+                <div class="subscription-price">
+                    <span class="subscription-price-year">$1,719/<?= $escaper->escapeHtml(__('year')) ?></span>
+                    <span class="subscription-price-month">($143/<?= $escaper->escapeHtml(__('mo')) ?>)</span>
+                </div>
+            </div>
+        </div>
+        <div class="support-item-row">
+            <div class="subscription-agreement">
+                <div class="subscription-agreement-header">
+                    <span>
+                        <?= $escaper->escapeHtml(__('Service level agreement')) ?>
+                    </span>
+                    <span class="agreement-badge">24/7</span>
+                </div>
+                <div class="subscription-agreement-container">
+                    <div class="subscription-agreement-item">
+                        <?= $escaper->escapeHtml(__('14h - time to first response')) ?>
+                    </div>
+                    <div class="subscription-agreement-item">
+                        <?= $escaper->escapeHtml(__('18h - time to update')) ?>
+                    </div>
+                    <div class="subscription-agreement-item">
+                        <?= $escaper->escapeHtml(__('24h - time to technical review')) ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="support-item-row">
+            <ul class="subscription-options">
+                <li class="subscription-options-item">
+                    <?= $escaper->escapeHtml(__('Premium included')) ?>
+                </li>
+                <li class="subscription-options-item">
+                    <?= $escaper->escapeHtml(__('Personal account manager')) ?>
+                </li>
+                <li class="subscription-options-item">
+                    <?= $escaper->escapeHtml(__('Screen sharing and video calls for configuration questions')) ?>
+                </li>
+                <li class="subscription-options-item">
+                    <?= $escaper->escapeHtml(__('Training sessions')) ?>
+                </li>
+                <li class="subscription-options-item">
+                    <?= $escaper->escapeHtml(__('Lite Performance Audit + special offer for Core Web Vitals optimization')) ?>
+                    <br/>
+                    <span class="subscription-options-item-hint">
+                        <?= $escaper->escapeHtml(__('once per quarter')) ?>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <a class="subscription-link"
+           href="<?= $escaper->escapeUrl($viewModel->getAmastyOneSubscribeUrl()) ?>"
+           target="_blank">
+            <?= $escaper->escapeHtml(__('Subscribe')) ?>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package SMTP Email Settings for Magento 2
+ */-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="admin_system_config_changed_section_amsmtp">
+        <observer name="amasty_smtp_clear_microsoft_token_data_after_config_change"
+                  instance="Amasty\Smtp\Observer\ClearMicrosoftTokenData" />
+    </event>
+</config>

@@ -1,0 +1,67 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Magento 2 Base Package
+ */
+
+use Amasty\Base\Block\Adminhtml\System\Config\Form\Field\LicenseKeys;
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
+
+/** @var LicenseKeys $block */
+/** @var Escaper $escaper */
+/** @var SecureHtmlRenderer $secureRenderer */
+
+$htmlId = $block->getHtmlId() ? $block->getHtmlId() : '_' . uniqid();
+$colspan = $block->isAddAfter() ? 2 : 1;
+?>
+<div class="design_theme_ua_regexp" id="grid<?= $escaper->escapeHtmlAttr($htmlId) ?>">
+    <div class="admin__control-table-wrapper">
+        <table class="admin__control-table am-license-registration-table" id="<?= $escaper->escapeHtmlAttr($block->getElement()->getId()) ?>">
+            <thead>
+            <tr>
+                <?php foreach ($block->getColumns() as $columnName => $column): ?>
+                    <th class="am-license-registration-th"><?= $escaper->escapeHtml($column['label']) ?></th>
+                <?php endforeach; ?>
+                <th class="col-actions am-license-registration-th" colspan="<?= (int)$colspan ?>"><?= $escaper->escapeHtml(__('Action')) ?></th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+                <td colspan="<?= count($block->getColumns()) + $colspan ?>" class="col-actions-add am-license-registration-td">
+                    <div class="am-license-registration-footer-actions">
+                        <button class="action-add ambase-license-btn ambase-license-btn-add"
+                                data-ambase-license="add-license-key"
+                                title="<?= $escaper->escapeHtmlAttr(__('Add')) ?>"
+                                type="button">
+                            <span><?= $escaper->escapeHtml($block->getAddButtonLabel()) ?></span>
+                        </button>
+
+                        <button class="ambase-license-btn ambase-license-btn-save"
+                                data-ambase-license="save-and-verify-license"
+                                title="<?= $escaper->escapeHtmlAttr(__('Save and Verify')) ?>"
+                                data-mage-init='{ "button": { "event":"save", "target":"#config-edit-form" } }'>
+                            <?= $escaper->escapeHtml(__('Save and Verify')) ?>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tfoot>
+            <tbody data-ambase-license="license-keys-container"></tbody>
+        </table>
+    </div>
+    <input type="hidden" name="<?= $escaper->escapeHtmlAttr($block->getElement()->getName()) ?>[__empty]" value=""/>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Amasty_Base/js/config/form/field/array": {
+                "columnNames": <?= /** @noEscape */ $block->getColumnNames() ?>,
+                "existingKeys": <?= /** @noEscape */ $block->getExistingKeysData() ?>,
+                "elementName": "<?= /** @noEscape */ $block->getElementName() ?>"
+            }
+        }
+    }
+</script>

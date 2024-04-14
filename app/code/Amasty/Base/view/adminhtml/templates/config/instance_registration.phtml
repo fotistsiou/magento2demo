@@ -1,0 +1,40 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Magento 2 Base Package
+ */
+
+use Amasty\Base\Block\Adminhtml\InstanceRegistrationMessages;
+use Magento\Framework\Escaper;
+
+/** @var InstanceRegistrationMessages $block */
+/** @var Escaper $escaper */
+
+$licenseValidation = $block->getLicenseValidation();
+?>
+
+<?php if ($block->isAmastyProductsSection() && $licenseValidation->isNeedCheckLicense() === true): ?>
+    <?php if ($messages = $licenseValidation->getMessages()): ?>
+        <?php foreach ($messages as $message): ?>
+            <div
+                class="am-irs-msg-container am-irs-msg-<?= $escaper->escapeHtmlAttr($message->getType()) ?>">
+                <div class="am-irs-msg-header">
+                    <?= $escaper->escapeHtml(__('License Registration')) ?>
+                </div>
+                <div class="am-irs-msg-content">
+                    <?= $escaper->escapeHtml(nl2br($message->getContent()), ['a', 'br']) ?>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <div class="am-irs-msg-container am-irs-msg-info">
+                <div class="am-irs-msg-header">
+                    <?= $escaper->escapeHtml(__('License Registration')) ?>
+                </div>
+                <div class="am-irs-msg-content">
+                    <?= $escaper->escapeHtml(__('Please register your instance to avoid unlicensed product usage. Enter the Instance Registration Key from your Account &#10230; License Registration.')) ?>
+                </div>
+            </div>
+    <?php endif; ?>
+<?php endif; ?>

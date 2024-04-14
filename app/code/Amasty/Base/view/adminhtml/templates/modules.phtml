@@ -1,0 +1,30 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Magento 2 Base Package
+ */
+/** @var \Amasty\Base\Block\Adminhtml\Extensions $block */
+/** @var \Magento\Framework\Escaper $escaper */
+?>
+
+<!-- ko scope: 'ambase_extensions' -->
+    <!-- ko template: getTemplate() --><!-- /ko-->
+<!-- /ko-->
+
+<script type="text/x-magento-init">
+{
+"*": {
+    "Magento_Ui/js/core/app": {
+            "components": {
+                "ambase_extensions": {
+                    "component": "Amasty_Base/js/extensions",
+                    "modulesData": <?= /* @noEscape */ $block->getModulesDataJson() ?>,
+                    "isOriginMarketplace": "<?= /* @noEscape */ $block->isOriginMarketplace() ?>",
+                    "seoParams": "<?= $escaper->escapeHtml($block->getSeoparams()) ?>"
+                }
+            }
+        }
+    }
+}
+</script>

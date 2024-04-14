@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package SMTP Email Settings for Magento 2
+ */-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="\Magento\Framework\Mail\TransportInterfaceFactory">
+        <plugin name="Amasty_Smtp::MailTransport" type="Amasty\Smtp\Plugin\MailFactory" />
+    </type>
+    <type name="\Magento\Email\Model\Template">
+        <plugin name="Amasty_Smtp::EmailTemplate" type="Amasty\Smtp\Plugin\Email\Model\Template" />
+    </type>
+
+    <virtualType name="Amasty\Smtp\Model\Provider\Config\Reader" type="Magento\Framework\Config\Reader\Filesystem">
+        <arguments>
+            <argument name="converter" xsi:type="object">Amasty\Smtp\Model\Provider\Config\Converter</argument>
+            <argument name="schemaLocator" xsi:type="object">Amasty\Smtp\Model\Provider\Config\SchemaLocator</argument>
+            <argument name="fileName" xsi:type="string">providers.xml</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Amasty\Smtp\Model\Provider\Config">
+        <arguments>
+            <argument name="reader" xsi:type="object">Amasty\Smtp\Model\Provider\Config\Reader</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\Mail\EmailMessage">
+        <arguments>
+            <argument name="encoding" xsi:type="string">utf-8</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\Mail\Template\TransportBuilderByStore">
+        <plugin name="AmsmtpTransportFrom" type="Amasty\Smtp\Plugin\Mail\Template\TransportBuilderByStorePlugin" />
+    </type>
+    <virtualType name="AmastySmtpGoogleServiceTokenProvider" type="Amasty\Smtp\Model\Token\Provider\AccessTokenProvider">
+        <arguments>
+            <argument name="accessTokenGenerator" xsi:type="object">Amasty\Smtp\Model\Token\Generator\Google\ServiceAccessTokenGenerator</argument>
+            <argument name="connectionProviderName" xsi:type="string">xoauth2_google_service</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AmastySmtpGoogleClientIdTokenProvider" type="Amasty\Smtp\Model\Token\Provider\AccessTokenProvider">
+        <arguments>
+            <argument name="accessTokenGenerator" xsi:type="object">Amasty\Smtp\Model\Token\Generator\Google\ClientIdAccessTokenGenerator</argument>
+            <argument name="connectionProviderName" xsi:type="string">xoauth2_google_client</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AmastySmtpMicrosoftClientIdTokenProvider" type="Amasty\Smtp\Model\Token\Provider\AccessTokenProvider">
+        <arguments>
+            <argument name="accessTokenGenerator" xsi:type="object">Amasty\Smtp\Model\Token\Generator\Microsoft\ClientIdAccessTokenGenerator</argument>
+            <argument name="connectionProviderName" xsi:type="string">xoauth2_microsoft_client</argument>
+        </arguments>
+    </virtualType>
+    <type name="Amasty\Smtp\Model\Provider\Connection\Google\ServiceAccountOauth">
+        <arguments>
+            <argument name="accessTokenProvider" xsi:type="object">AmastySmtpGoogleServiceTokenProvider</argument>
+        </arguments>
+    </type>
+    <type name="Amasty\Smtp\Model\Provider\Connection\Google\ClientIdOauth">
+        <arguments>
+            <argument name="accessTokenProvider" xsi:type="object">AmastySmtpGoogleClientIdTokenProvider</argument>
+        </arguments>
+    </type>
+    <type name="Amasty\Smtp\Model\Provider\Connection\Microsoft\ClientIdOauth">
+        <arguments>
+            <argument name="accessTokenProvider" xsi:type="object">AmastySmtpMicrosoftClientIdTokenProvider</argument>
+        </arguments>
+    </type>
+    <type name="Amasty\Smtp\Model\Provider\ConnectionProviderAdapter">
+        <arguments>
+            <argument name="connectionProviders" xsi:type="array">
+                <item name="xoauth2_google_client" xsi:type="object">Amasty\Smtp\Model\Provider\Connection\Google\ClientIdOauth</item>
+                <item name="xoauth2_google_service" xsi:type="object">Amasty\Smtp\Model\Provider\Connection\Google\ServiceAccountOauth</item>
+                <item name="xoauth2_microsoft_client" xsi:type="object">Amasty\Smtp\Model\Provider\Connection\Microsoft\ClientIdOauth</item>
+                <item name="login" xsi:type="object">Amasty\Smtp\Model\Provider\Connection\LoginOauth</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Amasty\Smtp\Model\Token\ScopeResolver">
+        <arguments>
+            <argument name="scopeTypes" xsi:type="array">
+                <item name="openid" xsi:type="string">openid</item>
+                <item name="email" xsi:type="string">email</item>
+                <item name="offline_access" xsi:type="string">offline_access</item>
+                <item name="access_as_user" xsi:type="string">https://outlook.office.com/IMAP.AccessAsUser.All</item>
+                <item name="smtp_send" xsi:type="string">https://outlook.office.com/SMTP.Send</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Config\Model\Config\TypePool">
+        <arguments>
+            <argument name="sensitive" xsi:type="array">
+                <item name="amsmtp/smtp/login" xsi:type="string">1</item>
+                <item name="amsmtp/smtp/passw" xsi:type="string">1</item>
+                <item name="amsmtp/smtp/xoauth2_google_client_email" xsi:type="string">1</item>
+                <item name="amsmtp/smtp/xoauth2_google_client_id" xsi:type="string">1</item>
+                <item name="amsmtp/smtp/xoauth2_google_client_secret" xsi:type="string">1</item>
+                <item name="amsmtp/smtp/xoauth2_google_client_refresh_token" xsi:type="string">1</item>
+                <item name="amsmtp/smtp/xoauth2_google_service_email" xsi:type="string">1</item>
+                <item name="amsmtp/smtp/xoauth2_google_credentials" xsi:type="string">1</item>
+            </argument>
+            <argument name="environment" xsi:type="array">
+                <item name="amsmtp/smtp/server" xsi:type="string">1</item>
+                <item name="amsmtp/smtp/port" xsi:type="string">1</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Amasty\Smtp\Api\Data\BlacklistInterface" type="Amasty\Smtp\Model\Blacklist"/>
+    <preference for="Amasty\Smtp\Api\BlacklistRepositoryInterface" type="Amasty\Smtp\Model\Blacklist\Repository"/>
+    <preference for="Magento\Config\Model\Config" type="Amasty\Smtp\Model\Config\FixObscureConfigDataComparing" />
+</config>

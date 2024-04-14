@@ -1,0 +1,10 @@
+<section class="ambase-submenu -second"
+         data-bind="
+            css: {
+                '_show': $data.secondLevelItem
+            }
+         ">
+    <!-- ko template: { name: templates.title, data: { title: secondLevelItem().label }} --><!-- /ko-->
+    <!-- ko template: { name: templates.closeButton, data: { action: resetActiveItem.bind($data) } } --><!-- /ko-->
+    <!-- ko template: { name: templates.links_list, data: { items: secondLevelItem().items } } --><!-- /ko-->
+</section>

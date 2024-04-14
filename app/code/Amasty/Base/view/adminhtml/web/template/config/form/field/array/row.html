@@ -1,0 +1,18 @@
+<tr id="<%- data._id %>">
+    <% data.columnNames.forEach(function(columnName) { %>
+        <td class="am-license-registration-td">
+            <input id="<%-data. _id %>_<%- columnName %>"
+                   type="text"
+                   class="input-text required-entry"
+                   name="<%- data.elementName %>[<%- data._id %>][<%- columnName %>]"
+                   value="<%- data[columnName] ?? '' %>"
+            />
+        </td>
+    <% }); %>
+    <td class="col-actions am-license-registration-td">
+        <button class="action-delete"
+                type="button"
+                aria-label="Delete"
+                data-ambase-license="delete-license-key"></button>
+    </td>
+</tr>

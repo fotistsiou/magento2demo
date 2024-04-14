@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package SMTP Email Settings for Magento 2
+ */-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="amasty_amsmtp_log" resource="default" engine="innodb" comment="Amasty SMTP Log Table">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Log record ID"/>
+        <column xsi:type="datetime" name="created_at" on_update="false" nullable="false"
+                comment="Created at datetime"/>
+        <column xsi:type="varchar" name="subject" nullable="false" length="255" comment="Subject"/>
+        <column xsi:type="text" name="body" nullable="false" comment="Body"/>
+        <column xsi:type="varchar" name="recipient_email" nullable="false" length="120" comment="Recipient Email"/>
+        <column xsi:type="smallint" name="status" padding="6" nullable="false" comment="Status"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+
+        <index referenceId="AMASTY_SMTP_SUBJECT_BODY_RECIPIENT_EMAIL_FULLTEXT" indexType="fulltext">
+            <column name="subject"/>
+            <column name="body"/>
+            <column name="recipient_email"/>
+        </index>
+    </table>
+    <table name="amasty_amsmtp_debug" resource="default" engine="innodb" comment="Amasty SMTP Debug Table">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Debug record ID"/>
+        <column xsi:type="datetime" name="created_at" on_update="false" nullable="false"
+                comment="Created at datetime"/>
+        <column xsi:type="text" name="message" nullable="false" comment="Message"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+    <table name="amasty_amsmtp_blacklist" resource="default" engine="innodb" comment="Amasty SMTP BlackList Table">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Blacklist Id"/>
+        <column xsi:type="varchar" name="customer_email" nullable="false" length="120" comment="Customer Email"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+
+        <constraint xsi:type="unique" referenceId="AMASTY_SMTP_CUSTOMER_EMAIL_UNIQUE_INDEX">
+            <column name="customer_email"/>
+        </constraint>
+    </table>
+</schema>

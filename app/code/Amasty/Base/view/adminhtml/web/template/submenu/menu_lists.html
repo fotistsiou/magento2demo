@@ -1,0 +1,14 @@
+<div class="ambase-menu-container" afterRender="afterRender.bind($data)">
+    <!-- ko ifnot: noSearchResults -->
+        <!-- ko scope: 'ambase_solutions' -->
+            <!-- ko template: { name: templates.list } --><!-- /ko-->
+        <!-- /ko-->
+        <!-- ko scope: 'ambase_simples' -->
+            <!-- ko template: { name: templates.list } --><!-- /ko-->
+        <!-- /ko -->
+        <!-- ko scope: 'ambase_links' -->
+            <!-- ko template: { name: templates.list } --><!-- /ko-->
+        <!-- /ko -->
+    <!-- /ko -->
+    <p class="ambase-notice" data-bind="visible: $data.noSearchResults, i18n: 'Sorry, no products were found.'"></p>
+</div>

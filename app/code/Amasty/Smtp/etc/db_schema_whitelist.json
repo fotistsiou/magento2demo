@@ -1,0 +1,26 @@
+{
+    "amasty_amsmtp_log": {
+        "column": {
+            "id": true,
+            "created_at": true,
+            "subject": true,
+            "body": true,
+            "recipient_email": true,
+            "status": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "AMASTY_SMTP_SUBJECT_BODY_RECIPIENT_EMAIL_FULLTEXT": true
+        }
+    },
+    "amasty_amsmtp_debug": {
+        "column": {
+            "id": true,
+            "created_at": true,
+            "message": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

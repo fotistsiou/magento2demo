@@ -1,0 +1,123 @@
+//
+//  Amasty Base Menu UiComponent
+//  ______________________________________________
+
+//
+//  Variables
+//  ----------------------------------------------
+
+@ambase-menu-item__indent: 1rem 1.5rem;
+
+//
+//  Common
+//  ----------------------------------------------
+
+& when (@media-common = true) {
+    .config-nav-block.amasty-tab strong:before {
+        background: url('@{baseDir}Amasty_Base/images/logo.svg') no-repeat;
+        content: '';
+        display: inline-block;
+        height: 16px;
+        margin-right: 12px;
+        vertical-align: bottom;
+        width: 16px;
+    }
+
+    /* phpcs:ignore Magento2.Less.AvoidId.IdSelectorUsage */
+    #amasty_base_information #row_download_info .label {
+        vertical-align: inherit;
+    }
+
+    /* phpcs:ignore Magento2.Less.AvoidId.IdSelectorUsage */
+    #amasty_base_information .ambase-cache-info td,
+    /* phpcs:ignore Magento2.Less.AvoidId.IdSelectorUsage */
+    #amasty_base_information .ambase-cache-info th {
+        border: 1px solid @color-light-gray;
+        padding: 10px;
+        text-align: left;
+    }
+
+    /* phpcs:ignore Magento2.Less.AvoidId.IdSelectorUsage */
+    #amasty_base_information .ambase-cache-info th {
+        background: @ambase__menu__table-header__background;
+        font-weight: bold;
+    }
+
+    .ambase-grid-message {
+        & {
+            background: url('@{baseDir}Amasty_Base/images/logo_m_table.png') no-repeat;
+            min-height: 53px;
+            padding-left: 58px;
+        }
+
+        &.amasty-grid-logo {
+            background: url('@{baseDir}Amasty_Base/images/logo_table.svg') no-repeat;
+        }
+    }
+
+    /* phpcs:ignore Magento2.Less.ClassNaming.NotAllowedSymbol */
+    .admin__action-dropdown-menu {
+        .notifications-entry[data-ambase-logo='1'] {
+            background: url('@{baseDir}Amasty_Base/images/logo_popup.svg') no-repeat 5px 7px;
+        }
+
+        .notifications-entry:not(.notifications-entry-last) {
+            background: url('@{baseDir}Amasty_Base/images/logo_m_popup.png') no-repeat 5px 7px;
+            padding-left: 37px;
+        }
+    }
+
+    /* phpcs:ignore Magento2.Less.ClassNaming.NotAllowedSymbol */
+    .admin__menu [data-ui-id^='menu-amasty-'] .submenu-group-title span:before,
+    /* phpcs:ignore Magento2.Less.ClassNaming.NotAllowedSymbol */
+    .admin__menu [data-ui-id^='menu-magento-'] [data-ui-id^='menu-magento-'] [data-ui-id^='menu-amasty-'] span:before {
+        background: url('@{baseDir}Amasty_Base/images/logo-menu.svg') no-repeat center;
+        content: '';
+        display: inline-block;
+        height: 19px;
+        margin-right: 12px;
+        vertical-align: top;
+        width: 16px;
+    }
+
+    /* phpcs:ignore Magento2.Less.AvoidId.IdSelectorUsage */
+    #menu-menuamasty-base-menu {
+        .ambase-menu-button.-close {
+            & {
+                z-index: 700;
+            }
+
+            &:focus,
+            &:hover {
+                background: transparent;
+            }
+        }
+
+        > a:before {
+            background: url(@ambase-menu-icon__amasty-logo) no-repeat center;
+            background-size: contain;
+            content: '';
+        }
+
+        > a:hover:before,
+        ._show > a:before {
+            background: url(@ambase-menu-icon__amasty-logo__hover) no-repeat center;
+            background-size: contain;
+        }
+    }
+
+    //  Start extension override
+    .item-extensions a,
+    .item-marketplace a {
+        color: @color-white !important;
+        font-weight: 600 !important;
+    }
+    //  End extension override
+
+    /* phpcs:ignore Magento2.Less.AvoidId.IdSelectorUsage */
+    #amasty_base_extensions table td.value,
+    /* phpcs:ignore Magento2.Less.AvoidId.IdSelectorUsage */
+    #amasty_base_information table td.value {
+        vertical-align: bottom;
+    }
+}

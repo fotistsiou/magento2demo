@@ -1,0 +1,27 @@
+never,never
+"Cron Tasks List","Cron Tasks List"
+"%1 task(s) has been successfully deleted","%1 task(s) has been successfully deleted"
+"An error has occurred","An error has occurred"
+"Job's generation started","Job's generation started"
+"%1 ago","%1 ago"
+Success,Success
+Pending,Pending
+Running,Running
+Error,Error
+Missed,Missed
+"Efficiently track and manage all cron tasks running in the website background with","Efficiently track and manage all cron tasks running in the website background with"
+"Visit page","Visit page"
+"Last Cron Activity: %1","Last Cron Activity: %1"
+"Run Cron","Run Cron"
+Status,Status
+"Select status..","Select status.."
+Delete,Delete
+"Delete Tasks","Delete Tasks"
+"Are you sure you want to delete selected tasks?","Are you sure you want to delete selected tasks?"
+ID,ID
+"Job Code","Job Code"
+Messages,Messages
+"Created At","Created At"
+"Scheduled At","Scheduled At"
+"Executed At","Executed At"
+"Finished At","Finished At"

@@ -1,0 +1,25 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Magento 2 Base Package
+ */ /** @var \Amasty\Base\Block\Adminhtml\System\Config\Tabs $block */ ?>
+
+<!-- ko scope: 'ambase_config_menu' -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+<!-- /ko-->
+
+<script type="text/x-magento-init">
+{
+"*": {
+    "Magento_Ui/js/core/app": {
+            "components": {
+                "ambase_config_menu": {
+                    "component": "Amasty_Base/js/config_menu",
+                    "config": <?= /* @noEscape */ $block->getConfigDataSerialized() ?>
+                }
+            }
+        }
+    }
+}
+</script>

@@ -1,0 +1,25 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Magento 2 Base Package
+ */
+
+use Amasty\Base\ViewModel\LicenseRegistration;
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Element\Template;
+
+/** @var Template $block */
+/** @var Escaper $escaper */
+
+/** @var LicenseRegistration $viewModel */
+$viewModel = $block->getViewModel();
+$message = $viewModel->getMessage();
+
+if ($message): ?>
+    <div class="message message-<?= $escaper->escapeHtmlAttr($message->getType()) ?> <?= $escaper->escapeHtmlAttr($message->getType()) ?>">
+        <div data-ui-id="messages-message-<?= $escaper->escapeHtmlAttr($message->getType()) ?>">
+            <?= $escaper->escapeHtml($message->getContent(), ['a']) ?>
+        </div>
+    </div>
+<?php endif; ?>

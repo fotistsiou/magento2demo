@@ -1,0 +1,211 @@
+//
+//  Amasty Base Submenu General Type UiComponent
+//  ______________________________________________
+
+//
+//  Variables
+//  ----------------------------------------------
+
+@ambase-scrollbar__color: #6e6a6a;
+@ambase-scrollbar__width: 8px;
+
+//
+//  Common
+//  ----------------------------------------------
+
+& when (@media-common = true) {
+    /* phpcs:ignore Magento2.Less.AvoidId.IdSelectorUsage */
+    #menu-menuamasty-base-menu .ambase-submenu {
+        & {
+            bottom: 0;
+            height: 100vh;
+            max-height: 100vh;
+            min-height: 770px;
+            min-width: 310px;
+            z-index: 698;
+        }
+
+        ::-webkit-scrollbar {
+            background-color: transparent;
+            cursor: pointer;
+            width: @ambase-scrollbar__width;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: transparent;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            & {
+                background-color: @ambase-scrollbar__color;
+                border-radius: 10px;
+                box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+            }
+
+            &:hover {
+                background-color: fade(@ambase-scrollbar__color, 5%);
+            }
+        }
+
+        &:not(.-second) {
+            .ambase-menu-item {
+                & {
+                    color: @color-very-light-gray;
+                }
+
+                &:hover {
+                    color: @color-gray65-almost;
+                }
+            }
+
+            .ambase-label.active {
+                color: @color-very-light-gray;
+            }
+
+            .ambase-menu-item .ambase-menu-item {
+                & {
+                    color: @color-gray65-almost;
+                }
+
+                &:hover {
+                    color: @color-very-light-gray;
+                }
+            }
+        }
+
+        .ambase-plan-label {
+            & {
+                color: @ambase__plan-label__color;
+            }
+
+            &:after {
+                content: ')';
+            }
+
+            &:before {
+                content: '(';
+            }
+        }
+
+        .ambase-menu-list {
+            & {
+                box-sizing: border-box;
+                max-height: ~'calc(100% - 80px)';
+                min-height: fit-content;
+                padding: 0 1.5rem;
+            }
+
+            &.-first > .ambase-menu-item.-link {
+                font-weight: bold;
+            }
+        }
+
+        .ambase-menu-item {
+            & {
+                align-items: center;
+                cursor: pointer;
+                display: flex;
+                margin: .7rem 0;
+                padding: @ambase-menu-item__indent;
+                transition: .1s;
+                width: 99%;
+            }
+
+            &.-link {
+                padding-left: 0;
+            }
+
+            &.-solution:hover {
+                color: @color-very-light-gray;
+            }
+
+            .ambase-label.-query {
+                color: @color-white;
+            }
+        }
+
+        .ambase-link.-submenu {
+            display: flex;
+        }
+
+        .ambase-link.-submenu:after {
+            content: none;
+        }
+
+        .ambase-menu-item.ambase-link.-link,
+        .ambase-link.-link {
+            & {
+                color: @ambase__submenu-link__color;
+            }
+
+            &:hover {
+                color: darken(@ambase__submenu-link__color-hover, 10%);
+            }
+
+            &:after {
+                &:extend(.abs-icon all);
+
+                content: @icon-export__content;
+                font-size: 1.7rem;
+                margin-left: @action__outer-indent;
+                vertical-align: top;
+            }
+        }
+
+        .ambase-dropdown-component {
+            & {
+                flex-basis: 100%;
+            }
+
+            .ambase-content {
+                padding: 0 0 0 1rem;
+            }
+
+            .ambase-label > .ambase-name {
+                padding-right: 4px;
+            }
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .ambase-submenu-title {
+            margin-bottom: 35px;
+        }
+
+        .ambase-title {
+            color: @color-white;
+            font-weight: bold;
+            letter-spacing: .013em;
+            margin: 0 0 0 15px;
+        }
+
+        .ambase-menu-container {
+            max-height: ~'calc(100% - 110px)';
+            overflow-y: auto;
+            padding-bottom: 20px;
+            position: relative;
+            scrollbar-color: @ambase-scrollbar__color transparent;
+            scrollbar-width: thin;
+            z-index: 700;
+        }
+
+        .ambase-notice {
+            color: @ambase__submenu-notice__color;
+            margin-left: 15px;
+            padding: 10px 0;
+        }
+
+        .ambase-flex {
+            display: inline-block;
+            font-size: 0;
+        }
+
+        .ambase-flex > .ambase-label {
+            font-size: 14px;
+            white-space: pre-wrap;
+        }
+    }
+}

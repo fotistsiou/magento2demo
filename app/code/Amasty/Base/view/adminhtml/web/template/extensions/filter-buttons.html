@@ -1,0 +1,26 @@
+<div class="ambase-grid-buttons">
+    <button class="ambase-button"
+            data-bind="
+                i18n: 'View Your Products',
+                click: $data.useGridFilter.bind($data, 'default'),
+                css: {'-active' : $data.isActive($data.stateValues.default)}">
+    </button>
+    <button class="ambase-button"
+            data-bind="enable: $data.update.length,
+                click: $data.useGridFilter.bind($data, 'update'),
+                css: {'-active' : $data.isActive($data.stateValues.update)}">
+        <span data-bind="i18n: 'Needs to be Updated'"></span>
+        <!-- ko if: $data.update.length -->
+            <span class="ambase-counter" data-bind="text: $data.update.length"></span>
+        <!-- /ko -->
+    </button>
+    <button class="ambase-button"
+            data-bind="enable: $data.solutions.length,
+                click: $data.useGridFilter.bind($data, 'solutions'),
+                css: {'-active' : $data.isActive($data.stateValues.solutions)}">
+        <span data-bind="i18n: 'Upgrade to Advanced Packages'"></span>
+        <!-- ko if: $data.solutions.length -->
+            <span class="ambase-counter" data-bind="text: $data.solutions.length"></span>
+        <!-- /ko -->
+    </button>
+</div>

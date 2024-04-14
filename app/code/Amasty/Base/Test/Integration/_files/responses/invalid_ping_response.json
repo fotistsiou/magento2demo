@@ -1,0 +1,9 @@
+{
+  "isNeedCheckLicense": true,
+  "messages": [
+    {
+      "type": "error",
+      "content": "The following Instance Registration Key(s) are invalid: \r\nd696d7e6-fd85-474b-8006-224e2e9fcec8 \r\nb1b01ea4-e824-44f9-bc0d-9d7a7457b90c \r\n\r\nPlease double-check that you've accurately copied them from your customer account."
+    }
+  ]
+}

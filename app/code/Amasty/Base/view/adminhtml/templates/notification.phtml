@@ -1,0 +1,15 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Magento 2 Base Package
+ */
+/** @var \Amasty\Base\Block\Adminhtml\Notification $block */
+?>
+<?php if ($count = $block->getUpdatesCount()): ?>
+<style>
+    .ambase-tab-container > .admin__page-nav-title:before {
+        content: '<?= (int)$count ?>';
+    }
+</style>
+<?php endif; ?>

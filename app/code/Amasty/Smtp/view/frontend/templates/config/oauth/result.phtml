@@ -1,0 +1,21 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package SMTP Email Settings for Magento 2
+ */
+/**
+ * @var \Amasty\Smtp\Block\Adminhtml\System\Config\Oauth\Result $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+?>
+
+<script>
+    <?php if ($block->isTokenGenerated()): ?>
+        window.opener.document.isTokenGenerated = true;
+    <?php else: ?>
+        window.opener.document.errorText = "<?= $escaper->escapeJs($block->getErrorMessage()); ?>"
+    <?php endif; ?>
+
+    window.close();
+</script>

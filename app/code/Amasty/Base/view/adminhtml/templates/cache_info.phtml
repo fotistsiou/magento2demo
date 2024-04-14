@@ -1,0 +1,27 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Magento 2 Base Package
+ */
+/** @var \Amasty\Base\Block\Adminhtml\System\Config\SysInfo\CacheInfo $block */
+/** @var \Magento\Framework\Escaper $escaper */
+?>
+<table class="ambase-cache-info">
+    <thead>
+        <tr>
+            <th><?= $escaper->escapeHtml('Name') ?></th>
+            <th><?= $escaper->escapeHtml('Status') ?></th>
+            <th><?= $escaper->escapeHtml('Additional Info') ?></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($block->getCacheTypesInfo() as $cacheTypeInfo): ?>
+            <tr>
+                <td><?= $escaper->escapeHtml((string)$cacheTypeInfo->getName()) ?></td>
+                <td><?= $escaper->escapeHtml((string)$cacheTypeInfo->getStatus()) ?></td>
+                <td><?= $escaper->escapeHtml((string)$cacheTypeInfo->getAdditionalInfo()) ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>

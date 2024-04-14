@@ -1,0 +1,10 @@
+<a data-bind="
+        attr: {
+            title: $t('Open ') + item.label,
+            class: (!$data.classes || item.type == 'link') ? 'ambase-link -submenu' + ' -' + item.type : '',
+            href: item.url,
+            target: ((!item.type || item.type === 'link') && item.add_info !== 'open_current') ? '_blank' : '_self'
+        },
+        css: $data.classes ? 'ambase-menu-item -link' : ''">
+    <!-- ko template: { name: $parent.templates.item_label, data: { item: item } } --><!-- /ko-->
+</a>

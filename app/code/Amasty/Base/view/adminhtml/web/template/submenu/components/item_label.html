@@ -1,0 +1,10 @@
+<!-- ko ifnot: item.foundStr -->
+    <span class="ambase-name" data-bind="i18n: item.label"></span>
+<!-- /ko-->
+<!-- ko if: item.foundStr -->
+    <span class="ambase-flex">
+        <span class="ambase-label" if="item.prevStr" data-bind="text: item.prevStr"></span>
+        <strong class="ambase-label -query" data-bind="text: item.foundStr"></strong>
+        <span class="ambase-label" if="item.residualStr" data-bind="text: item.residualStr"></span>
+    </span>
+<!-- /ko-->

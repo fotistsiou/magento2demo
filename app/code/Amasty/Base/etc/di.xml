@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Magento 2 Base Package
+ */-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Amasty\Base\Model\Feed\Response\FeedResponseInterface" type="Amasty\Base\Model\Feed\Response\FeedResponse"/>
+    <preference for="Magento\Framework\Filesystem\DriverInterface" type="Magento\Framework\Filesystem\Driver\File" />
+    <preference for="Amasty\Base\Model\SysInfo\Provider\Collector\CacheService\Info\CacheInfoInterface"
+                type="Amasty\Base\Model\SysInfo\Provider\Collector\CacheService\Info\CacheInfo" />
+
+    <type name="Amasty\Base\Model\Response\OctetResponseInterfaceFactory">
+        <arguments>
+            <argument name="responseFactoryAssociationMap" xsi:type="array">
+                <item name="file" xsi:type="object">Amasty\Base\Model\Response\File\FileOctetResponseFactory</item>
+                <item name="url" xsi:type="object">Amasty\Base\Model\Response\File\FileUrlOctetResponseFactory</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\TemplateEngine\Php">
+        <plugin name="Amasty_Base::AddEscaperToPhpRenderer" type="Amasty\Base\Plugin\Framework\View\TemplateEngine\Php" sortOrder="10"/>
+    </type>
+
+    <!--Add possibility for apply patches before DS start-->
+    <virtualType name="Magento\Framework\Setup\Patch\DeclarativeSchemaApplyBeforeReader" type="Magento\Framework\Setup\Patch\PatchReader">
+        <arguments>
+            <argument name="type" xsi:type="string">declarativeSchemaApplyBefore</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Amasty\Base\Setup\Patch\PatchApplier" type="Magento\Framework\Setup\Patch\PatchApplier">
+        <arguments>
+            <argument name="dataPatchReader" xsi:type="object">Magento\Framework\Setup\Patch\DeclarativeSchemaApplyBeforeReader</argument>
+            <argument name="schemaPatchReader" xsi:type="object">Magento\Framework\Setup\Patch\DeclarativeSchemaApplyBeforeReader</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Amasty\Base\Plugin\Setup\Model\DeclarationInstaller\ApplyPatchesBeforeDeclarativeSchema">
+        <arguments>
+            <argument name="patchApplier" xsi:type="object">Amasty\Base\Setup\Patch\PatchApplier</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\Setup\Declaration\Schema\OperationsExecutor">
+        <plugin name="Amasty_Base::execute-patches-before-schema-apply"
+                type="Amasty\Base\Plugin\Setup\Model\DeclarationInstaller\ApplyPatchesBeforeDeclarativeSchema"/>
+    </type>
+    <!--Add possibility for apply patches before DS end-->
+
+    <virtualType name="Amasty\Base\Model\LicenceService\Response\Entity\Config\RegisteredInstance"
+                 type="Amasty\Base\Utils\Http\Response\Entity\Config">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="class_name" xsi:type="string">Amasty\Base\Model\LicenceService\Response\Data\RegisteredInstance</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Amasty\Base\Utils\Http\Response\Entity\ConfigPool">
+        <arguments>
+            <argument name="configs" xsi:type="array">
+                <item name="/api/v1/instance/registration" xsi:type="object">
+                    Amasty\Base\Model\LicenceService\Response\Entity\Config\RegisteredInstance
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Amasty\Base\Model\SysInfo\Provider\CollectorPool">
+        <arguments>
+            <argument name="collectors" xsi:type="array">
+                <item name="licenceService" xsi:type="array">
+                    <item name="modules" xsi:type="object">Amasty\Base\Model\SysInfo\Provider\Collector\LicenceService\Module</item>
+                    <item name="domains" xsi:type="object">Amasty\Base\Model\SysInfo\Provider\Collector\LicenceService\Domain</item>
+                    <item name="platform" xsi:type="object">Amasty\Base\Model\SysInfo\Provider\Collector\LicenceService\Platform</item>
+                    <item name="customer_instance_key" xsi:type="object">Amasty\Base\Model\SysInfo\Provider\Collector\LicenceService\CustomerInstanceKey</item>
+                    <item name="is_production" xsi:type="object">Amasty\Base\Model\SysInfo\Provider\Collector\LicenceService\IsProduction</item>
+                </item>
+                <item name="pingRequest" xsi:type="array">
+                    <item name="customer_instance_key" xsi:type="object">Amasty\Base\Model\SysInfo\Provider\Collector\LicenceService\CustomerInstanceKey</item>
+                    <item name="is_production" xsi:type="object">Amasty\Base\Model\SysInfo\Provider\Collector\LicenceService\IsProduction</item>
+                </item>
+                <item name="sysInfoService" xsi:type="array">
+                    <item name="module" xsi:type="object">Amasty\Base\Model\SysInfo\Provider\Collector\Module</item>
+                    <item name="config" xsi:type="object">Amasty\Base\Model\SysInfo\Provider\Collector\Config</item>
+                    <item name="system" xsi:type="object">Amasty\Base\Model\SysInfo\Provider\Collector\System</item>
+                </item>
+                <item name="cacheInfoService" xsi:type="array">
+                    <item name="page" xsi:type="object">Amasty\Base\Model\SysInfo\Provider\Collector\CacheService\Page</item>
+                    <item name="opcache" xsi:type="object">Amasty\Base\Model\SysInfo\Provider\Collector\CacheService\Opcache</item>
+                    <item name="redis" xsi:type="object">Amasty\Base\Model\SysInfo\Provider\Collector\CacheService\Redis</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- Cache Info Configuration Start -->
+    <virtualType name="Amasty\Base\Model\SysInfo\Provider\Collector\CacheService\Redis\RedisTypeDefaultConfig" type="Amasty\Base\Model\SysInfo\Provider\Collector\CacheService\Redis\RedisTypeConfig">
+        <arguments>
+            <argument name="path" xsi:type="string">cache/frontend/default/backend</argument>
+            <argument name="values" xsi:type="array">
+                <item name="0" xsi:type="string">Magento\Framework\Cache\Backend\Redis</item>
+                <item name="1" xsi:type="string">Cm_Cache_Backend_Redis</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Amasty\Base\Model\SysInfo\Provider\Collector\CacheService\Redis\RedisTypePageCacheConfig" type="Amasty\Base\Model\SysInfo\Provider\Collector\CacheService\Redis\RedisTypeConfig">
+        <arguments>
+            <argument name="path" xsi:type="string">cache/frontend/page_cache/backend</argument>
+            <argument name="values" xsi:type="array">
+                <item name="0" xsi:type="string">Magento\Framework\Cache\Backend\Redis</item>
+                <item name="1" xsi:type="string">Cm_Cache_Backend_Redis</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Amasty\Base\Model\SysInfo\Provider\Collector\CacheService\Redis\RedisTypeSessionConfig" type="Amasty\Base\Model\SysInfo\Provider\Collector\CacheService\Redis\RedisTypeConfig">
+        <arguments>
+            <argument name="path" xsi:type="string">session/save</argument>
+            <argument name="values" xsi:type="array">
+                <item name="0" xsi:type="string">redis</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Amasty\Base\Model\SysInfo\Provider\Collector\CacheService\Redis\RedisTypesResolver">
+        <arguments>
+            <argument name="redisTypeConfigPool" xsi:type="array">
+                <item name="default" xsi:type="object">Amasty\Base\Model\SysInfo\Provider\Collector\CacheService\Redis\RedisTypeDefaultConfig</item>
+                <item name="pageCache" xsi:type="object">Amasty\Base\Model\SysInfo\Provider\Collector\CacheService\Redis\RedisTypePageCacheConfig</item>
+                <item name="session" xsi:type="object">Amasty\Base\Model\SysInfo\Provider\Collector\CacheService\Redis\RedisTypeSessionConfig</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- Cache Info Configuration End -->
+
+    <type name="Magento\Framework\Config\FileResolverByModule">
+        <plugin name="AmBase::FileResolverByModule"
+                type="Amasty\Base\Plugin\Framework\Setup\Declaration\Schema\FileSystem\XmlReader\RestrictDropOperationsPlugin"/>
+    </type>
+
+    <!-- CLI Configuration Start -->
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="AmBase::sendSysInfo" xsi:type="object">Amasty\Base\Console\Command\SendSysInfo</item>
+                <item name="AmBase::registerLicenceKey" xsi:type="object">Amasty\Base\Console\Command\RegisterLicenceKey</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- CLI Configuration End -->
+    <type name="Magento\Framework\Mview\View\Subscription">
+        <plugin name="Amasty_Base::FixInstall" sortOrder="10"
+                type="Amasty\Base\Plugin\Framework\Mview\View\Subscription\FixInstall"/>
+    </type>
+    <type name="Magento\Indexer\Model\Indexer">
+        <plugin name="Amasty_Base::skipException" sortOrder="10"
+                type="Amasty\Base\Plugin\Indexer\Model\Indexer\SkipException"/>
+    </type>
+</config>

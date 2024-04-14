@@ -1,0 +1,20 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Magento 2 Base Package
+ */
+/**
+ * @var \Magento\Backend\Block\Template $block
+ */
+?>
+<script>
+    require([
+        "jquery"
+    ], function($){
+        $(document).ready(function () {
+            $('a[href*="https://amasty.com"], a[href*="http://amasty.com"], a[href*="https://marketplace.magento.com"]')
+                .attr('target', '_blank');
+        });
+    });
+</script>

@@ -1,0 +1,63 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package SMTP Email Settings for Magento 2
+ */ /** @var \Amasty\Smtp\Block\Adminhtml\Log\View $block */ ?>
+<?php /** @var \Magento\Framework\Escaper $escaper */ ?>
+<div style="border:1px solid #ccc;" class="entry-edit">
+    <div style="margin:20px;" class="box">
+        <p class="a-center">
+        <table width="100%">
+            <tr style="padding-bottom: 4px;">
+                <td style="width: 140px; color: #4F4F4F; text-align: right;">
+                    <strong>
+                        <?= $escaper->escapeHtml(__('Date')); ?>
+                    </strong>
+                </td>
+                <td style="width: 30px;"></td>
+                <td>
+                    <?= $escaper->escapeHtml($block->getDate()); ?>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 140px; color: #4F4F4F; text-align: right;">
+                    <strong>
+                        <?= $escaper->escapeHtml(__('Subject')); ?>
+                    </strong>
+                </td>
+                <td style="width: 30px;"></td>
+                <td>
+                    <?= $escaper->escapeHtml($block->getSubject()); ?>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 140px; color: #4F4F4F; text-align: right;">
+                    <strong>
+                        <?= $escaper->escapeHtml(__('To')); ?>
+                    </strong>
+                </td>
+                <td style="width: 30px;"></td>
+                <td>
+                    <?= $escaper->escapeHtml($block->getTo()); ?>
+                </td>
+            </tr>
+        </table>
+        </p>
+    </div>
+    <div style="margin:20px;" class="box">
+        <table>
+            <tr style="padding-bottom: 4px;">
+                <td style="width: 140px; color: #4F4F4F; text-align: right;">
+                    <strong>
+                        <?= $escaper->escapeHtml(__('Body')); ?>
+                    </strong>
+                </td>
+                <td style="width: 30px;"></td>
+                <td>
+                    <?= /** @noEscape */ $block->getBody(); ?>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

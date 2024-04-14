@@ -1,0 +1,264 @@
+//
+//  Amasty Slick Slider Styles
+//  ____________________________________________
+
+//
+//  Variables
+//  ____________________________________________
+
+@ambase__slick-list-loading__border-color: #5c5c5c;
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .amslick-slider-container {
+        /* phpcs:ignore Magento2.Less.SemicolonSpacing.NotAtEnd */
+        .slick-dots li button:focus,
+        /* phpcs:ignore Magento2.Less.SemicolonSpacing.NotAtEnd */
+        .slick-dots li button:hover,
+        /* phpcs:ignore Magento2.Less.SemicolonSpacing.NotAtEnd */
+        .slick-list:focus {
+            outline: 0;
+        }
+
+        .slick-list,
+        .slick-slider,
+        .slick-track {
+            display: block;
+            position: relative;
+        }
+
+        .slick-loading .slick-slide,
+        .slick-loading .slick-track {
+            visibility: hidden;
+        }
+
+        .slick-list {
+            margin: @amslick-indent__zero;
+            overflow: hidden;
+            padding: @amslick-indent__zero;
+        }
+
+        .slick-list.dragging {
+            cursor: pointer;
+            cursor: hand;
+        }
+
+        .slick-slider .slick-list,
+        .slick-slider .slick-track {
+            transform: translate3d(0,0,0);
+        }
+
+        .slick-track {
+            & {
+                left: 0;
+                margin: @amslick-indent__zero auto;
+                top: 0;
+            }
+
+            &:after,
+            &:before {
+                content: '';
+                display: table;
+            }
+
+            &:after {
+                clear: both;
+            }
+        }
+
+        .slick-slide,
+        .slick-slide.slick-loading img {
+            display: none;
+        }
+
+        .slick-slide {
+            float: left;
+            height: 100%;
+            min-height: 1px;
+            vertical-align: middle;
+        }
+
+        [dir=rtl] .slick-slide {
+            float: right;
+        }
+
+        .slick-slide.dragging img {
+            pointer-events: none;
+        }
+
+        .slick-vertical .slick-slide {
+            border: 1px solid transparent;
+            display: block;
+            height: auto;
+        }
+
+        .slick-arrow.slick-hidden {
+            display: none;
+        }
+
+        .slick-loading .slick-list {
+            background: 0 0;
+            position: relative;
+        }
+
+        .slick-loading .slick-list:before {
+            animation: loading 1s infinite linear;
+            border-color: rgba(0,0,0,.2);
+            border-radius: 100%;
+            border-style: solid;
+            border-top-color: @ambase__slick-list-loading__border-color;
+            border-width: 3px;
+            content: '';
+            display: block;
+            height: @amslick-list__size;
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            width: @amslick-list__size;
+        }
+
+        .slick-next.slick-disabled,
+        .slick-prev.slick-disabled {
+            opacity: @amslick-opacity__not-active;
+        }
+
+        .slick-dotted.slick-slider {
+            margin-bottom: @amslick-indent__l;
+        }
+
+        .slick-dots {
+            display: block;
+            left: 0;
+            list-style: none;
+            margin: @amslick-indent__zero;
+            padding: @amslick-indent__zero;
+            position: absolute;
+            text-align: center;
+            width: 100%;
+        }
+
+        .slick-dots li {
+            cursor: pointer;
+            display: inline-block;
+            height: @amslick-dot__size;
+            margin: @amslick-indent__zero @amslick-indent__xs;
+            padding: @amslick-indent__zero;
+            position: relative;
+            width: @amslick-dot__size;
+        }
+
+        .slick-dots li button,
+        .slick-slider .slick-arrow {
+            box-shadow: none;
+            cursor: pointer;
+            display: block;
+            outline: 0;
+        }
+
+        .slick-dots li button {
+            & {
+                background: 0 0;
+                border: 0;
+                color: transparent;
+                font-size: 0;
+                height: @amslick-dot__size;
+                line-height: 0;
+                padding: @amslick-indent__xs;
+                width: @amslick-dot__size;
+            }
+
+            &:focus:before,
+            &:hover:before {
+                opacity: @amslick-opacity__on-hover;
+            }
+
+            &:before {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: @amslick-dot__color;
+                content: '•';
+                font-size: 16px;
+                height: @amslick-dot__size;
+                left: 0;
+                line-height: @amslick-dot__size;
+                opacity: @amslick-opacity__not-active;
+                position: absolute;
+                text-align: center;
+                top: 0;
+                width: @amslick-dot__size;
+            }
+        }
+
+        .slick-dots li.slick-active button:before {
+            color: @amslick-dot__color;
+            opacity: @amslick-opacity__default;
+        }
+
+        .slick-slider {
+            -webkit-tap-highlight-color: transparent;
+            box-sizing: border-box;
+            padding: @amslick-indent__zero @amslick-indent__m;
+            touch-action: pan-y;
+            user-select: none;
+        }
+
+        .slick-slider .slick-arrow {
+            & {
+                background: @amslick-arrow__background !important;
+                border: none;
+                color: transparent;
+                font-size: 0;
+                height: 22px;
+                line-height: 0;
+                padding: @amslick-indent__zero;
+                position: absolute;
+                top: 50%;
+                transform: translate(0,-50%);
+                transition: background .3s ease;
+                width: 15px;
+            }
+
+            &:before,
+            &:after {
+                content: '';
+            }
+
+            &:hover {
+                background: @amslick-arrow__background__hover;
+            }
+        }
+
+        .slick-slider .slick-arrow.slick-next {
+            right: 0;
+        }
+
+        .slick-slider .slick-arrow.slick-prev {
+            left: 0;
+            transform: rotate(180deg) translate(0,50%);
+        }
+
+        .slick-initialized .slick-slide {
+            display: inline-block !important;
+            float: none !important;
+            height: auto;
+        }
+
+        .product-items.slick-slider > .slick-list {
+            padding: @amslick-indent__s @amslick-indent__zero;
+        }
+
+        .product-items.slick-slider .slick-slide .product-item {
+            display: block !important;
+            margin: auto !important;
+            max-width: 205px;
+        }
+
+        .sidebar.sidebar-additional {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,434 @@
+//
+//  Amasty Base Extensions & Notifications
+//  ____________________________________________
+
+//
+//  Variables
+//  --------------------------------------------
+@ambase__irs__badge-success__bg-color: #3fb87e;
+@ambase__irs__badge-info__bg-color: #bad9ff;
+@ambase__irs__badge-pending__bg-color: #dbdbdb;
+@ambase__irs__badge-warning__bg-color: #ffe49f;
+@ambase__irs__badge-error__bg-color: #f26f5d;
+
+@ambase__irs__tooltip__text-color: #1a1a1a;
+@ambase__irs__tooltip-success__bg-color: #e7f5ee;
+@ambase__irs__tooltip-info__bg-color: #e7edf5;
+@ambase__irs__tooltip-pending__bg-color: #fbfbfb;
+@ambase__irs__tooltip-warning__bg-color: #fcf7ea;
+@ambase__irs__tooltip-error__bg-color: #fceaea;
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    /* phpcs:ignore Magento2.Less.ClassNaming.NotAllowedSymbol */
+    .adminhtml-system_config-edit .ambase-page-title {
+        color: @ambase__page-title__color;
+        font-size: 18px;
+        font-weight: bold;
+        letter-spacing: -.03em;
+        margin-bottom: 40px;
+        text-transform: capitalize;
+    }
+
+    .ambase-buttons-block {
+        & {
+            display: flex;
+            margin-bottom: 30px;
+        }
+
+        .ambase-button {
+            border-radius: 4px;
+            color: @color-white;
+            padding: 10px 15px;
+            position: relative;
+            text-decoration: none;
+            transition: background-color .3s ease-in-out;
+        }
+
+        .ambase-button.-orange {
+            & {
+                background-color: @ambase__orange-color;
+                padding-right: 46px;
+            }
+
+            &:hover {
+                background-color: @color-phoenix-brown-almost;
+            }
+
+            &:after {
+                background: @ambase-extensions-icon__updates__background;
+                content: '';
+                height: 10px;
+                position: absolute;
+                right: 24px;
+                top: ~'calc(50% - 6px)';
+                width: 12px;
+            }
+        }
+
+        .ambase-button.-blue {
+            & {
+                background-color: @color-white;
+                border: 1px solid @color-blue-pure;
+                color: @color-gray19;
+                margin-left: 10px;
+                padding-right: 43px;
+            }
+
+            &:hover {
+                background-color: @ambase__button-hover__color;
+            }
+
+            &:after {
+                background: @ambase-extensions-icon__how-to-update__background;
+                content: '';
+                height: 10px;
+                position: absolute;
+                right: 22px;
+                top: ~'calc(50% - 6px)';
+                width: 12px;
+            }
+        }
+    }
+
+    /* phpcs:ignore Magento2.Less.ClassNaming.NotAllowedSymbol */
+    .ambase-tab-container > .admin__page-nav-title._collapsible {
+        padding-right: 10rem;
+    }
+
+    /* phpcs:ignore Magento2.Less.ClassNaming.NotAllowedSymbol */
+    .ambase-tab-container > .admin__page-nav-title:before {
+        background: @ambase__orange-color;
+        border-radius: 4px;
+        color: @color-white;
+        font-size: 16px;
+        font-weight: bold;
+        height: 26px;
+        line-height: 22px;
+        padding: 2px 0;
+        position: absolute;
+        right: 50px;
+        text-align: center;
+        top: ~'calc(50% - 13px)';
+        width: 44px;
+    }
+
+    .ambase-grid-buttons {
+        .ambase-button {
+            background-color: @ambase__grid-button__color;
+            border: 1px solid @ambase__grid-button__border-color;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-weight: 400;
+            margin-right: 15px;
+            padding: 12px;
+            transition: background-color .4s ease-in;
+        }
+
+        .ambase-button.-active,
+        .ambase-button:hover {
+            background-color: @ambase__grid-button__color-hover;
+            color: @color-white;
+        }
+
+        .ambase-counter:before {
+            content: '(';
+        }
+
+        .ambase-counter:after {
+            content: ')';
+        }
+    }
+
+    .ambase-products-table {
+        & {
+            background: @color-white;
+            border-radius: 6px;
+            box-shadow: 0 2px 13px rgba(95, 146, 247, .13);
+            margin-top: 30px;
+            padding: 15px 30px 30px;
+            text-align: left;
+        }
+
+        .ambase-thead .ambase-tr,
+        .ambase-tbody .ambase-tr:not(:last-child) {
+            border-bottom: 1px solid @ambase__products-table__border-color;
+        }
+
+        .ambase-tbody {
+            display: block;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .ambase-th {
+            color: @ambase__products-table__header-color;
+        }
+
+        .ambase-td,
+        .ambase-th {
+            padding: 15px 0;
+        }
+
+        .ambase-tr {
+            display: table;
+            table-layout: fixed;
+            width: 100%;
+        }
+
+        .ambase-license-tooltip {
+            display: inline-block;
+            /* phpcs:disable Magento2.Less.ColonSpacing.AfterNewline */
+            .lib-tooltip(
+                @_tooltip-position: right,
+                @_tooltip-color: @ambase__irs__tooltip__text-color,
+                @_tooltip-padding: 0
+            );
+            /* phpcs:enable Magento2.Less.ColonSpacing.AfterNewline */
+
+            &:after {
+                vertical-align: middle;
+                margin-left: 1.1rem;
+            }
+
+            .ambase-license-tooltip-content {
+                padding: 1rem;
+
+                &:first-child {
+                    border-top-left-radius: .6rem;
+                    border-top-right-radius: .6rem;
+                }
+
+                &:last-child {
+                    border-bottom-left-radius: .6rem;
+                    border-bottom-right-radius: .6rem;
+                }
+
+                &.ambase-license-tooltip-content-success {
+                    background-color: @ambase__irs__tooltip-success__bg-color;
+                }
+
+                &.ambase-license-tooltip-content-pending {
+                    background-color: @ambase__irs__tooltip-pending__bg-color;
+                }
+
+                &.ambase-license-tooltip-content-info {
+                    background-color: @ambase__irs__tooltip-info__bg-color;
+                }
+
+                &.ambase-license-tooltip-content-warning {
+                    background-color: @ambase__irs__tooltip-warning__bg-color;
+                }
+
+                &.ambase-license-tooltip-content-error {
+                    background-color: @ambase__irs__tooltip-error__bg-color;
+                }
+            }
+
+            &.ambase-license-tooltip-pending {
+                &:after {
+                    content: url('@{baseDir}Amasty_Base/images/irs/module/tooltip/pending.svg');
+                }
+
+                .tooltip-content {
+                    background-color: @ambase__irs__tooltip-pending__bg-color;
+                }
+
+                .tooltip-content:after {
+                    border-right-color: @ambase__irs__tooltip-pending__bg-color;
+                }
+            }
+
+            &.ambase-license-tooltip-info {
+                &:after {
+                    content: url('@{baseDir}Amasty_Base/images/irs/module/tooltip/info.svg');
+                }
+
+                .tooltip-content {
+                    background-color: @ambase__irs__tooltip-info__bg-color;
+                }
+
+                .tooltip-content:after {
+                    border-right-color: @ambase__irs__tooltip-info__bg-color;
+                }
+            }
+
+            &.ambase-license-tooltip-success {
+                &:after {
+                    content: url('@{baseDir}Amasty_Base/images/irs/module/tooltip/success.svg');
+                }
+
+                .tooltip-content {
+                    background-color: @ambase__irs__tooltip-success__bg-color;
+                }
+
+                .tooltip-content:after {
+                    border-right-color: @ambase__irs__tooltip-success__bg-color;
+                }
+            }
+
+            &.ambase-license-tooltip-warning {
+                &:after {
+                    content: url('@{baseDir}Amasty_Base/images/irs/module/tooltip/warning.svg');
+                }
+
+                .tooltip-content {
+                    background-color: @ambase__irs__tooltip-warning__bg-color;
+                }
+
+                .tooltip-content:after {
+                    border-right-color: @ambase__irs__tooltip-warning__bg-color;
+                }
+            }
+
+            &.ambase-license-tooltip-error {
+                &:after {
+                    content: url('@{baseDir}Amasty_Base/images/irs/module/tooltip/error.svg');
+                }
+
+                .tooltip-content {
+                    background-color: @ambase__irs__tooltip-error__bg-color;
+                }
+
+                .tooltip-content:after {
+                    border-right-color: @ambase__irs__tooltip-error__bg-color;
+                }
+            }
+
+            .tooltip-content {
+                border: none;
+                border-radius: .6rem;
+                /* phpcs:ignore: Magento2.Less.ZeroUnits.ZeroUnitFound */
+                box-shadow: 0 2px 8px 0 rgba(13,40,95,0.2);
+                font-size: 1.3rem;
+                font-weight: 400;
+                left: calc(~'100% + .5rem');
+                top: -.5rem;
+
+                &:before {
+                    border-right-color: rgba(13, 40, 95, .05);
+                }
+            }
+        }
+
+        .ambase-license-badge {
+            border-radius: .4rem;
+            display: inline-block;
+            font-size: 1.1rem;
+            font-weight: 700;
+            max-width: 9.5rem;
+            padding: .2rem .5rem;
+            text-align: center;
+            text-transform: uppercase;
+            vertical-align: middle;
+            width: 100%;
+
+            &.ambase-license-badge-pending {
+                background-color: @ambase__irs__badge-pending__bg-color;
+            }
+
+            &.ambase-license-badge-info {
+                background-color: @ambase__irs__badge-info__bg-color;
+            }
+
+            &.ambase-license-badge-warning {
+                background-color: @ambase__irs__badge-warning__bg-color;
+            }
+
+            &.ambase-license-badge-success {
+                background-color: @ambase__irs__badge-success__bg-color;
+                color: @color-white;
+            }
+
+            &.ambase-license-badge-error {
+                background-color: @ambase__irs__badge-error__bg-color;
+                color: @color-white;
+            }
+        }
+    }
+
+    .ambase-products-table,
+    .ambase-menu-container {
+        .ambase-plan {
+            font-weight: bold;
+
+            &:before {
+                content: '(';
+            }
+
+            &:after {
+                content: ')';
+            }
+        }
+    }
+
+    .ambase-table-container {
+        & {
+            width: 100%;
+        }
+
+        .ambase-link {
+            padding-left: 17px;
+            position: relative;
+        }
+
+        .ambase-link:before {
+            background: @ambase-extensions-icon__upgrade__background;
+            content: '';
+            height: 12px;
+            left: 0;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+        }
+
+        .ambase-version {
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .ambase-version:before {
+            content: '';
+            left: 0;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .ambase-version.-last:before {
+            background: @ambase-extensions-icon__last_version__background;
+            height: 7px;
+            width: 9px;
+        }
+
+        .ambase-version.-current:before {
+            background: @ambase-extensions-icon__current_version__background;
+            height: 8px;
+            width: 10px;
+        }
+
+        .ambase-version.-update {
+            color: @ambase__orange-color;
+            padding-left: 26px;
+        }
+
+        .ambase-version.-update:before {
+            background: @ambase-extensions-icon__arrow__background;
+            height: 8px;
+            width: 21px;
+        }
+    }
+
+    .ambase-version-container {
+        margin-bottom: 5px;
+    }
+
+    /* phpcs:ignore Magento2.Less.AvoidId.IdSelectorUsage */
+    .accordion .config #row_cron_configuration .value {
+        width: 70%;
+    }
+}

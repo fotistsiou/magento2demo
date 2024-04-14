@@ -1,0 +1,18 @@
+<li class="ambase-menu-item"
+    data-bind="visible: $data.visible, css: {'-solution': $data.componentType === $data.typeSolution}">
+    <section class="ambase-dropdown-component"
+             data-bind="css: {'active': isDropdownActive}">
+    <span class="ambase-label"
+          data-bind="
+              click: $data.onDropdownClick.bind($data),
+              attr: {
+                  title: $t('Open ') + $data.label
+              }">
+        <!-- ko scope: 'ambase_submenu' -->
+            <!-- ko template: { name: $data.templates.item_label, data: { item: $parent } } --><!-- /ko-->
+        <!-- /ko-->
+        <!-- ko template: { name: $parent.templates.label, data: { text: $data.plan_label } } --><!-- /ko-->
+    </span>
+        <!-- ko template: { name: $parent.templates.dropdownContent } --><!-- /ko-->
+    </section>
+</li>

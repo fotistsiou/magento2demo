@@ -1,0 +1,62 @@
+//
+//  Amasty Base Menu Search UiComponent
+//  ______________________________________________
+
+//
+//  Variables
+//  ----------------------------------------------
+
+@ambase-search-icon__size: 20px;
+@ambase-cancel-icon__size: 15px;
+
+//
+//  Common
+//  ----------------------------------------------
+
+& when (@media-common = true) {
+    .ambase-search-block {
+        & {
+            margin: 0 15px 30px;
+            position: relative;
+            z-index: 700;
+        }
+
+        &:before {
+            background: @ambase-menu-icon__search__background;
+            content: '';
+            height: @ambase-search-icon__size;
+            left: 10px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: @ambase-search-icon__size;
+        }
+
+        .ambase-search {
+            background: @ambase__search-input__color;
+            border: 1px solid @ambase__search-input__color;
+            border-radius: 5px;
+            box-sizing: border-box;
+            color: @color-white;
+            padding: 7px 32px 7px 40px;
+            width: 100%;
+        }
+
+        .ambase-search:focus,
+        .ambase-search:active {
+            border: 1px solid @color-blue-pure;
+        }
+
+        .ambase-cancel {
+            background: @ambase-menu-search-icon__close__background;
+            border: none;
+            height: @ambase-cancel-icon__size;
+            padding: 0;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: @ambase-cancel-icon__size;
+        }
+    }
+}

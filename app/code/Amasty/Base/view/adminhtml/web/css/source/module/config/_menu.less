@@ -1,0 +1,36 @@
+//
+//  Amasty Base Config Menu
+//  ______________________________________________
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    /* phpcs:ignore Magento2.Less.ClassNaming.NotAllowedSymbol */
+    .ambase-tab-container .admin__page-nav._hide .admin__page-nav-title._collapsible:after {
+        content: '\e628';
+    }
+
+    .ambase-menu-container {
+        .ambase-subtitle {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 20px;
+            text-transform: uppercase;
+        }
+
+        /* phpcs:ignore Magento2.Less.ClassNaming.NotAllowedSymbol */
+        .admin__page-nav {
+            border: none;
+            margin-left: 5px;
+        }
+
+        .ambase-nav {
+            border: none;
+            font-weight: 600;
+            margin-left: 5px;
+            text-transform: none;
+        }
+    }
+}

@@ -1,0 +1,20 @@
+<!-- ko if: !$data.isOriginMarketplace -->
+    <div class="ambase-buttons-block">
+        <a class="ambase-button -orange"
+           target="_blank"
+           data-bind="
+               i18n: 'Get Updates',
+               attr: {
+                   title: $t('Get Updates'),
+                   href: 'https://amasty.com/extupdates/account/downloads/' + $data.seoParams}">
+        </a>
+        <a class="ambase-button -blue"
+           target="_blank"
+           data-bind="
+               i18n: 'How to Update?',
+               attr: {
+                   title: $t('How to Update?'),
+                   href: 'https://amasty.com/knowledge-base/upgrade-magento-2-extension.html' + $data.seoParams}">
+        </a>
+    </div>
+<!-- /ko -->

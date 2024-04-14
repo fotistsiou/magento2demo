@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Magento 2 Base Package
+ */-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="notices.wrapper">
+            <block name="amasty.base.license.registration" template="Amasty_Base::license_registration.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Amasty\Base\ViewModel\LicenseRegistration</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="page.menu">
+            <block class="Amasty\Base\Block\Adminhtml\Backend\Menu" name="menu" as="menu" template="Magento_Backend::menu.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

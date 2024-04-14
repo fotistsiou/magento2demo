@@ -1,0 +1,24 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package SMTP Email Settings for Magento 2
+ */ /** @var \Magento\Backend\Block\Template $block */ ?>
+<?php /** @var \Magento\Framework\Escaper $escaper */ ?>
+
+<div class="amsmtp-buttoned-input"><?= /** @noEsccape */ $block->getData('select_html'); ?></div>
+<div>
+    <p class="amsmtp-notice message-info info message">
+        <?= $escaper->escapeHtml(__('Please note that "SMTP for E-mail extension" is disabled.')); ?>
+    </p>
+    <p class="amsmtp-notice-check-connection message-info info message">
+        <?= $escaper->escapeHtml(__('Please save the configuration before testing connection.')); ?>
+    </p>
+    <?= $block->getChildHtml('button') ?>
+</div>
+<div class="details collapsed" data-role="details">
+    <div class="toggle" data-role="toggle">
+        <?= $escaper->escapeHtml(__('Debug info')); ?>
+    </div>
+    <div class="error-message" data-role="message"></div>
+</div>

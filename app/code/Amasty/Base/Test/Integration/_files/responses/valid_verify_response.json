@@ -1,0 +1,89 @@
+{
+  "instanceKeys": [
+    {
+      "instanceKey": "d696d7e6-fd85-474b-8006-224e2e9fcec8",
+      "support": {
+        "active": true
+      }
+    },
+    {
+      "instanceKey": "b1b01ea4-e824-44f9-bc0d-9d7a7457b90c",
+      "support": {
+        "active": false
+      }
+    }
+  ],
+  "modules": [
+    {
+      "instanceKey": "b1b01ea4-e824-44f9-bc0d-9d7a7457b90c",
+      "code": "Amasty_Geoip",
+      "version": "1.5.5",
+      "verifyStatus": {
+        "status": "active",
+        "type": "success"
+      },
+      "messages": [{
+        "type": "success",
+        "content": "Your license for the product is valid, granting you access to all product updates."
+      }]
+    },
+    {
+      "instanceKey": "b1b01ea4-e824-44f9-bc0d-9d7a7457b90c",
+      "code": "Amasty_Gdpr",
+      "version": "2.6.7",
+      "verifyStatus": {
+        "status": "active",
+        "type": "success"
+      },
+      "messages": [{
+        "type": "success",
+        "content": "Your license for the product is valid, granting you access to all product updates."
+      }]
+    },
+    {
+      "instanceKey": "d696d7e6-fd85-474b-8006-224e2e9fcec8",
+      "code": "Amasty_SalesRuleWizard",
+      "version": "1.0.3",
+      "verifyStatus": {
+        "status": "active",
+        "type": "success"
+      },
+      "messages": [{
+        "type": "success",
+        "content": "Your license for the product is valid, granting you access to all product updates."
+      }]
+    },
+    {
+      "instanceKey": "d696d7e6-fd85-474b-8006-224e2e9fcec8",
+      "code": "Amasty_Conditions",
+      "version": "1.5.2",
+      "verifyStatus": {
+        "status": "active",
+        "type": "success"
+      },
+      "messages": [{
+        "type": "success",
+        "content": "Your license for the product is valid, granting you access to all product updates."
+      }]
+    },
+    {
+      "instanceKey": "b1b01ea4-e824-44f9-bc0d-9d7a7457b90c",
+      "code": "Amasty_Rgrid",
+      "version": "1.0.7",
+      "verifyStatus": {
+        "status": "active",
+        "type": "success"
+      },
+      "messages": [{
+        "type": "success",
+        "content": "Your license for the product is valid, granting you access to all product updates."
+      }]
+    }
+  ],
+  "messages": [
+    {
+      "type": "success",
+      "content": "We've verified your account, and all extensions have valid licenses. Thank you!"
+    }
+  ]
+}

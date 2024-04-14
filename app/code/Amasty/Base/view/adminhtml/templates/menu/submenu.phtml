@@ -1,0 +1,48 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Magento 2 Base Package
+ */
+/** @var \Amasty\Base\Block\Adminhtml\Backend\AmastyMenu $block */
+/** @var \Magento\Framework\Escaper $escaper */
+?>
+
+<section class="ambase-submenu submenu"
+         data-bind="scope: 'ambase_submenu'">
+    <!-- ko template: { name: templates.title, data: { title: vendorName }} --><!-- /ko-->
+    <!-- ko scope: 'ambase_search' --><!-- ko template: getTemplate() --><!-- /ko --><!-- /ko-->
+    <!-- ko template: { name: templates.menu_lists } --><!-- /ko-->
+    <!-- ko template: { name: templates.closeButton, data: { action: resetActiveItem.bind($data), role: 'close-submenu' } } --><!-- /ko-->
+    <!-- ko template: { name: templates.submenuSecond } --><!-- /ko-->
+</section>
+
+<script type="text/x-magento-init">
+{
+"*": {
+    "Magento_Ui/js/core/app": {
+            "components": {
+                "ambase_submenu": {
+                    "component": "amBaseSubmenu",
+                    "data": <?= /* @noEscape */ $block->getMenuItemsJson() ?>
+                },
+                "ambase_search": {
+                    "component": "Amasty_Base/js/menu/search"
+                },
+                "ambase_solutions": {
+                    "component": "Amasty_Base/js/menu/items",
+                    "title": "<?= $escaper->escapeHtml(__('Solutions')) ?>"
+                },
+                "ambase_simples": {
+                    "component": "Amasty_Base/js/menu/items",
+                    "title": "<?= $escaper->escapeHtml(__('Extensions')) ?>"
+                },
+                "ambase_links": {
+                    "component": "Amasty_Base/js/menu/items",
+                    "title": ""
+                }
+            }
+        }
+    }
+}
+</script>

@@ -1,0 +1,24 @@
+<!-- ko if: $data.items && $data.items.length -->
+    <!-- ko scope: 'ambase_submenu' -->
+        <li class="ambase-menu-item"
+            data-bind="
+                attr: {
+                    title: $t('Open ') + $parent.label
+                },
+                event: {
+                    click: function() {
+                        $data.setActiveItem($parent);
+                    }
+                },
+                visible: $parent.visible">
+            <!-- ko template: { name: templates.item_label, data: { item: $parent } } --><!-- /ko-->
+        </li>
+    <!-- /ko-->
+<!-- /ko-->
+<!-- ko ifnot: $data.items && $data.items.length -->
+    <li class="ambase-menu-item -link" data-bind="visible: $data.visible">
+        <!-- ko scope: 'ambase_submenu' -->
+            <!-- ko template: { name: templates.link, data: { item: $parent } } --><!-- /ko-->
+        <!-- /ko-->
+    </li>
+<!-- /ko-->

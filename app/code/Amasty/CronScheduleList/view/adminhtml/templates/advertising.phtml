@@ -1,0 +1,23 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Cron Schedule List for Magento 2 (System) 
+ */ /** @var \Amasty\CronScheduleList\Block\Adminhtml\Advertising $block */ ?>
+<?php /** @var \Magento\Framework\Escaper $escaper */ ?>
+
+<div class="amasty_cron_advertising_banner">
+    <div class="message">
+        <p>
+            <?= $escaper->escapeHtml(__('Efficiently track and manage all cron tasks running '
+                . 'in the website background with')); ?><b> Magento 2 Cron Scheduler extension.</b>
+            <a href="<?= $escaper->escapeUrl($block->getLink()); ?>" target="_blank">
+                <button class="action- scalable primary">
+                    <span>
+                        <?= $escaper->escapeHtml(__('Visit page')); ?>
+                    </span>
+                </button>
+            </a>
+        </p>
+    </div>
+</div>

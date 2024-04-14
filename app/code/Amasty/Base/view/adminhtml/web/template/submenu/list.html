@@ -1,0 +1,8 @@
+<!-- ko if: elems() && elems().length && !$data.isNotFound() -->
+    <h4 class="ambase-title" data-bind="text: $data.title"></h4>
+    <ul class="ambase-menu-list -first" role="menu">
+        <!-- ko foreach: elems() -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        <!-- /ko -->
+    </ul>
+<!-- /ko -->

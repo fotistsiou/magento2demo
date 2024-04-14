@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package SMTP Email Settings for Magento 2
+ */-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="amsmtp_clear_messages" instance="Amasty\Smtp\Model\Logger\MessageLogger" method="autoClear">
+            <schedule>0 1 * * *</schedule>
+        </job>
+        <job name="amsmtp_clear_debug" instance="Amasty\Smtp\Model\Logger\DebugLogger" method="autoClear">
+            <schedule>0 1 * * *</schedule>
+        </job>
+    </group>
+</config>

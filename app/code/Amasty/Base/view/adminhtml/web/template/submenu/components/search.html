@@ -1,0 +1,14 @@
+<section class="ambase-search-block">
+    <input class="ambase-search"
+           type="search"
+           pattern="[a-zA-Z0-9]+"
+           data-bind="
+                attr: {
+                    placeholder: $t('Search')
+                },
+                value: $data.value,
+                valueUpdate: 'afterkeydown'">
+    <!-- ko if: $data.value -->
+        <button class="ambase-cancel" data-bind="click: $data.cancel.bind($data)"></button>
+    <!-- /ko -->
+</section>

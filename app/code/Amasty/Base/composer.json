@@ -1,0 +1,22 @@
+{
+    "name": "amasty/base",
+    "description": "Amasty Base",
+    "require": {
+        "php": ">=7.3",
+        "ext-dom": "*",
+        "monolog/monolog": ">=2.7"
+    },
+    "type": "magento2-module",
+    "version": "1.15.0",
+    "license": [
+        "proprietary"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Amasty\\Base\\": ""
+        }
+    }
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Magento 2 Base Package
+ */-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <amasty_base>
+            <notifications>
+                <type>INFO,PROMO,INSTALLED_UPDATE,TIPS_TRICKS</type>
+                <frequency>5</frequency>
+                <ads_enable>1</ads_enable>
+            </notifications>
+            <menu>
+                <enable>1</enable>
+            </menu>
+            <licence_service>
+                <api_url>https://irs.amasty.com</api_url>
+            </licence_service>
+            <instance_registration>
+                <production_mode>1</production_mode>
+            </instance_registration>
+        </amasty_base>
+        <system>
+            <media_storage_configuration>
+                <allowed_resources>
+                    <amasty>amasty</amasty>
+                </allowed_resources>
+            </media_storage_configuration>
+        </system>
+    </default>
+</config>

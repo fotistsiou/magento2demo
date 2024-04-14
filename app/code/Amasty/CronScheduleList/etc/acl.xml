@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package Cron Schedule List for Magento 2 (System) 
+ */-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::system">
+                    <resource id="Amasty_CronScheduleList::amasty_schedule" title="Amasty Cron Scheduler">
+                        <resource id="Amasty_CronScheduleList::schedule_list" title="Cron Tasks List" />
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

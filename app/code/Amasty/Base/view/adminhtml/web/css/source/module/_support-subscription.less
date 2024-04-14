@@ -1,0 +1,264 @@
+//
+//  Amasty Get Support Page
+//  ____________________________________________
+
+//
+//  Variables
+//  --------------------------------------------
+
+@ambase__support__media__desktop: 1364px;
+@ambase__support-item__row-even__border-color: #30306b;
+@ambase__support-item__row-even__color: #18184a;
+@ambase__subscription__link__color: #ff5b0f;
+@mabase__subscription__name__badge__color: #7a56df;
+@mabase__subscription__options__item-hint__color: #5a5552;
+@mabase__subscription__agreement__badge__color: #dce7fe;
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .ambase-page-title.ambase-support-page-title {
+        color: @color-gray19;
+        margin-bottom: 1rem;
+    }
+
+    .ambase-support-container {
+        display: flex;
+        flex-direction: column;
+        margin-top: 3rem;
+
+        .support-item {
+            margin-bottom: 2rem;
+            padding: 2rem;
+
+            &:nth-child(odd) {
+                border: 1px solid @color-gray90;
+                color: @color-gray19;
+
+                .support-item-row {
+                    &:not(:last-of-type) {
+                        border-bottom: 1px solid @color-gray90;
+                    }
+                }
+
+                .subscription-options-item-hint {
+                    color: @mabase__subscription__options__item-hint__color;
+                }
+            }
+
+            &:nth-child(even) {
+                background: @ambase__support-item__row-even__color;
+                color: @color-white;
+
+                .support-item-row {
+                    &:not(:last-of-type) {
+                        border-bottom: 1px solid @ambase__support-item__row-even__border-color;
+                    }
+                }
+
+                .subscription-options-item-hint {
+                    color: @color-gray-light0;
+                }
+            }
+        }
+
+        .support-item-row {
+            display: flex;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+
+            &:last-of-type {
+                padding-bottom: 0;
+            }
+        }
+
+        .subscription-image-container {
+            height: 6rem;
+            margin-right: 1rem;
+            width: 6rem;
+
+            .subscription-image {
+                max-width: 6rem;
+            }
+        }
+
+        .subscription-info {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+            .subscription-name-container {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .subscription-name {
+                font-size: 2.4rem;
+                font-weight: 700;
+                line-height: 2.9rem;
+                margin-bottom: .7rem;
+            }
+
+            .subscription-price {
+                font-size: 1.6rem;
+                font-weight: 400;
+                line-height: 2.4rem;
+            }
+
+            .subscription-price-month {
+                color: @color-gray68;
+            }
+        }
+
+        .subscription-name-container {
+            .subscription-name-badge-container {
+                margin-left: auto;
+            }
+
+            .subscription-name-badge {
+                background-color: @mabase__subscription__name__badge__color;
+                border-radius: 1rem;
+                font-size: 1rem;
+                font-weight: 700;
+                padding: .4rem .7rem;
+                text-transform: uppercase;
+            }
+        }
+
+        .subscription-agreement {
+            .subscription-agreement-header {
+                font-size: 1.7rem;
+                font-weight: 600;
+                margin-bottom: 1.5rem;
+            }
+
+            .agreement-badge {
+                background-color: @mabase__subscription__agreement__badge__color;
+                border-radius: 5rem;
+                font-size: 1rem;
+                font-weight: 700;
+                letter-spacing: .125rem;
+                margin-left: .5rem;
+                padding: .4rem .8rem;
+                vertical-align: middle;
+            }
+
+            .subscription-agreement-container {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .subscription-agreement-item {
+                font-size: 1.6rem;
+                font-weight: 400;
+                margin-right: 1.5rem;
+            }
+        }
+
+        .subscription-options {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin-bottom: 0;
+
+            .subscription-options-item {
+                flex: 1 0 33%;
+                font-size: 1.6rem;
+                font-weight: 400;
+                margin: 0 1rem 1rem 1.6rem;
+                max-width: fit-content;
+                padding-left: 1.2rem;
+
+                &::marker {
+                    content: url('@{baseDir}Amasty_Base/images/support/check-mark.svg');
+                }
+            }
+
+            .subscription-options-item-hint {
+                font-size: 1.2rem;
+                font-weight: 400;
+            }
+        }
+
+        .subscription-link {
+            background-color: @ambase__subscription__link__color;
+            color: @color-white;
+            display: inline-flex;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: .1rem;
+            padding: 1.7rem 2.7rem;
+            text-transform: uppercase;
+
+            &:hover {
+                background-color: @color-phoenix-brown-almost;
+                border-color: @color-phoenix-brown;
+                box-shadow: 0 0 0 1px @color-blue-pure;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+//
+//  Custom breakpoints
+//  --------------------------------------------
+
+& when (@media-target = 'desktop'), (@media-target = 'all') {
+    @media all and (min-width: (@ambase__support__media__desktop)),
+    print {
+        .media-width('min', (@ambase__support__media__desktop));
+    }
+}
+
+//
+//  Desktop
+//  --------------------------------------------
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @ambase__support__media__desktop) {
+    .ambase-support-container {
+        flex-direction: row;
+        gap: 1.2%;
+
+        .support-item {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+        }
+
+        .support-item-row {
+            margin-bottom: 3rem;
+
+            .subscription-agreement-container {
+                flex-direction: column;
+            }
+
+            .subscription-agreement-item {
+                margin-left: 2.5rem;
+
+                &:not(:last-child) {
+                    margin-bottom: 1.6rem;
+                }
+            }
+
+            .subscription-options {
+                flex-direction: column;
+                flex-wrap: nowrap;
+            }
+
+            .subscription-options-item {
+                flex: initial;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        .subscription-link {
+            justify-content: center;
+            margin-top: auto;
+        }
+    }
+}

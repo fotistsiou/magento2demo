@@ -1,0 +1,42 @@
+<ul class="admin__page-nav-items items ambase-menu-container" data-role="content" role="tabpanel" aria-hidden="true">
+    <!-- ko foreach: $data.base -->
+        <li class="admin__page-nav-item item" data-bind="css: {'_active' : $data.is_active}">
+            <a class="admin__page-nav-link item-nav"
+               data-bind="text: $data.name, attr: {href: $data.url}, title: $data.name"></a>
+        </li>
+    <!-- /ko -->
+    <!-- ko if: $data.solutions.length -->
+        <li>
+            <h4 class="ambase-subtitle" data-bind="i18n: 'Solutions'"></h4>
+        </li>
+    <!-- /ko -->
+    <!-- ko foreach: $data.solutions -->
+        <li class="config-nav-block admin__page-nav _collapsed"
+            data-collapsible="true"
+            role="tablist"
+            data-bind='mageInit: {"collapsible":{"active": $parent.isActive($data.extensions),
+                         "openedState": "_show",
+                         "closedState": "_hide",
+                         "collapsible": true,
+                         "animate": 200}}'>
+            <span class="admin__page-nav-title title _collapsible ambase-nav"
+                  data-role="title"
+                  role="tab">
+                <span data-bind="text: $data.name"></span>
+                <span class="ambase-plan" data-bind="text: $data.plan_label"></span>
+            </span>
+            <ul class="admin__page-nav-items items"
+                data-role="content"
+                role="tabpanel"
+                aria-hidden="true">
+                <!-- ko template: $parent.templates.items --><!-- /ko -->
+            </ul>
+        </li>
+    <!-- /ko -->
+    <!-- ko if: $data.extensions.length -->
+        <li>
+            <h4 class="ambase-subtitle" data-bind="i18n: 'Extensions'"></h4>
+        </li>
+        <!-- ko template: $data.templates.items --><!-- /ko -->
+    <!-- /ko -->
+</ul>

@@ -1,0 +1,39 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) Amasty (https://www.amasty.com)
+ * @package SMTP Email Settings for Magento 2
+ */ /** @var Amasty\Smtp\Block\Config $block */ ?>
+<?php /** @var \Magento\Framework\Escaper $escaper */ ?>
+
+<div class="amsmtp-modal">
+    <div class="amsmtp-modal-body-content">
+        <p class="message"></p>
+    </div>
+</div>
+
+<script>
+require([
+    'jquery',
+    'Amasty_Smtp/js/config'
+], function($){
+    $('#amsmtp_smtp').amsmtpConfig({
+        selectors: {
+            provider: '#amsmtp_smtp_provider',
+            server: '#amsmtp_smtp_server',
+            port: '#amsmtp_smtp_port',
+            auth: '#amsmtp_smtp_auth',
+            encryption: '#amsmtp_smtp_sec',
+
+            login: '#amsmtp_smtp_login',
+            password: '#amsmtp_smtp_passw',
+            test_email: '#amsmtp_smtp_test_email'
+        },
+        providers: <?= /** @noEscape */json_encode($block->getProviders(), true) ?>,
+        check_url: "<?= $escaper->escapeUrl($block->getUrl('amasty_smtp/config/check', $block->getParams())); ?>",
+        <?php if ($block->isNeedToShowInteractiveAuthFrame()): ?>
+            microsoft_auth_url: "<?= $escaper->escapeUrl($block->getMicrosoftAuthorizationUrl()); ?>",
+        <?php endif ?>
+    });
+});
+</script>

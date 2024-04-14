@@ -1,0 +1,151 @@
+//
+//  Amasty Base Instance Registration section
+//  ______________________________________________
+
+//
+//  Variables
+//  --------------------------------------------
+
+@ambase__license-registration__add-key-btn__bg: #5a5552;
+@ambase__license-registration__save-key-btn__bg: #eb5203;
+
+@ambase__irs__error-msg__bg: #fceaea;
+@ambase__irs__success-msg__bg: #efffe2;
+@ambase__irs__warning-msg__bg: #fdf3da;
+@ambase__irs__info-msg__bg: #ecf2ff;
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .am-instance-registration.section-config {
+        border-bottom: none;
+        margin-bottom: 5rem;
+
+        .entry-edit-head {
+            display: none;
+        }
+
+        .form-list .label {
+            font-weight: 600;
+            white-space: nowrap;
+            width: fit-content;
+        }
+
+        .form-list .value {
+            width: 100%;
+
+            &.with-tooltip .tooltip {
+                float: initial;
+                margin-left: 1rem;
+                margin-top: .6rem;
+            }
+
+            .select.admin__control-select {
+                background-image: url('@{baseDir}Amasty_Base/images/arrows-bg.svg'), linear-gradient(@color-gray-light0, @color-gray-light0), linear-gradient(@color-gray68, @color-gray68);
+                min-width: 9rem;
+                width: fit-content;
+            }
+
+            .admin__control-table-wrapper {
+                min-width: 28rem;
+                width: 44%;
+            }
+        }
+
+        .am-license-registration-table.admin__control-table {
+            .am-license-registration-td,
+            .am-license-registration-th {
+                background-color: @color-gray-light0;
+            }
+
+            .am-license-registration-th {
+                font-weight: 600;
+            }
+
+            .col-actions,
+            .col-actions-add.am-license-registration-td {
+                padding-right: 1.5rem;
+                text-align: right;
+            }
+        }
+
+        .am-license-registration-footer-actions {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .ambase-license-btn {
+            border: none;
+            border-radius: .3rem;
+            color: @color-white;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .ambase-license-btn-add {
+            background-color: @ambase__license-registration__add-key-btn__bg;
+            padding: .8rem 2rem;
+        }
+
+        .ambase-license-btn-save {
+            background-color: @ambase__license-registration__save-key-btn__bg;
+            padding: 1rem 2rem;
+        }
+    }
+
+    .am-irs-msg-container {
+        margin-bottom: 1.5rem;
+        padding: 2rem 3rem;
+
+        .am-irs-msg-header {
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-bottom: 1.3rem;
+        }
+
+        .am-irs-msg-content {
+            font-size: 1.4rem;
+            font-weight: 400;
+        }
+
+        .am-irs-msg-header:before {
+            margin-right: .6rem;
+            vertical-align: sub;
+        }
+
+        &.am-irs-msg-error {
+            background-color: @ambase__irs__error-msg__bg;
+
+            .am-irs-msg-header:before {
+                content: url('@{baseDir}Amasty_Base/images/irs/message/error.svg');
+            }
+        }
+
+        &.am-irs-msg-success {
+            background-color: @ambase__irs__success-msg__bg;
+
+            .am-irs-msg-header:before {
+                content: url('@{baseDir}Amasty_Base/images/irs/message/success.svg');
+            }
+        }
+
+        &.am-irs-msg-warning {
+            background-color: @ambase__irs__warning-msg__bg;
+
+            .am-irs-msg-header:before {
+                content: url('@{baseDir}Amasty_Base/images/irs/message/warning.svg');
+            }
+        }
+
+        &.am-irs-msg-info {
+            background-color: @ambase__irs__info-msg__bg;
+
+            .am-irs-msg-header:before {
+                content: url('@{baseDir}Amasty_Base/images/irs/message/warning.svg');
+            }
+        }
+    }
+}

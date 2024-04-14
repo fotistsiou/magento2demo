@@ -1,0 +1,80 @@
+<table class="ambase-table-container">
+    <thead class="ambase-thead">
+    <tr class="ambase-tr">
+        <th class="ambase-th" data-bind="i18n: 'Products'"></th>
+        <!-- ko if: $data.shouldRenderLicenseStatus -->
+            <th class="ambase-th ambase-license-col" >
+                <span data-bind="i18n: 'License Status'"></span>
+                <div class="ambase-license-tooltip ambase-license-tooltip-pending">
+                    <div class="tooltip-content">
+                        <div class="ambase-license-tooltip-content ambase-license-tooltip-content-pending">
+                            <span data-bind="i18n: 'Additional information about license statuses can be viewed'"></span>
+                            <a target="_blank" data-bind="i18n: 'here', attr: { href: $data.subscription.faqUrl }"></a>.
+                        </div>
+                    </div>
+                </div>
+            </th>
+        <!-- /ko -->
+        <th class="ambase-th" data-bind="i18n: 'Version'"></th>
+        <th class="ambase-th" data-bind="i18n: 'Actions'"></th>
+    </tr>
+    </thead>
+    <tbody class="ambase-tbody">
+        <!-- ko foreach: $data.modules -->
+            <tr class="ambase-tr">
+                <td class="ambase-td">
+                    <span data-bind="text: $data.name"></span>
+                    <!-- ko if: $data.plan_label -->
+                        <span class="ambase-plan" data-bind="text: $data.plan_label"></span>
+                    <!-- /ko -->
+                </td>
+                <!-- ko if: $parent.shouldRenderLicenseStatus -->
+                    <td class="ambase-td ambase-license-col">
+                        <div class="ambase-license-badge"
+                             data-bind="class: 'ambase-license-badge-' + $data.verify_status.type">
+                            <span data-bind="text: $data.verify_status.status"></span>
+                        </div>
+                        <!-- ko if: !!$data.messages.length -->
+                            <div class="ambase-license-tooltip" data-bind="class: 'ambase-license-tooltip-' + $data.messages[0].type">
+                                <div class="tooltip-content">
+                                <!-- ko foreach: $data.messages -->
+                                    <div class="ambase-license-tooltip-content"
+                                         data-bind="class: 'ambase-license-tooltip-content-' + $data.type, html: $data.content"></div>
+                                <!-- /ko -->
+                                </div>
+                            </div>
+                        <!-- /ko -->
+                    </td>
+                <!-- /ko -->
+                <td class="ambase-td">
+                    <!-- ko if: $data.has_update -->
+                        <div class="ambase-version-container">
+                            <span class="ambase-version -current" data-bind="text: $data.version"></span>
+                            <span class="ambase-version -update" data-bind="text: $data.last_version"></span>
+                        </div>
+                        <a class="ambase-link"
+                           target="_blank"
+                           data-bind="i18n: 'New Update',
+                                      attr: {href: $data.update_url,
+                                      title: $('New Update')}"></a>
+                    <!-- /ko -->
+                    <!-- ko ifnot: $data.has_update -->
+                        <span class="ambase-version -last" data-bind="text: $data.version"></span>
+                    <!-- /ko -->
+                </td>
+                <td class="ambase-td" data-bind="using: $parent.getActionLink($data), as: 'linkData'">
+                    <!-- ko if: !!linkData?.url -->
+                        <a class="ambase-link"
+                           target="_blank"
+                           data-bind="i18n: linkData.text,
+                                      attr: {href: linkData.url,
+                                      title: linkData.text}"></a>
+                    <!-- /ko -->
+                    <!-- ko ifnot: !!linkData?.url -->
+                        <span data-bind="i18n: 'None'"></span>
+                    <!-- /ko -->
+                </td>
+            </tr>
+        <!-- /ko-->
+    </tbody>
+</table>
